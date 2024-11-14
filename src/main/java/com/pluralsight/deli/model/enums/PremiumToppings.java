@@ -1,6 +1,7 @@
 package com.pluralsight.deli.model.enums;
 
 public enum PremiumToppings {
+    // All the meat toppings
     STEAK(Type.MEAT),
     HAM(Type.MEAT),
     SALAMI(Type.MEAT),
@@ -8,6 +9,7 @@ public enum PremiumToppings {
     CHICKEN(Type.MEAT),
     BACON(Type.MEAT),
 
+    // All the cheese toppings
     AMERICAN_CHEESE(Type.CHEESE),
     SWISS_CHEESE(Type.CHEESE),
     PROVOLONE_CHEESE(Type.CHEESE),
@@ -15,6 +17,9 @@ public enum PremiumToppings {
 
     private final Type type;
 
+    public Type getType(){
+        return type;
+    }
     PremiumToppings(Type type) {
         this.type = type;
     }
