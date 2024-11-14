@@ -62,10 +62,12 @@ public class Sandwich extends Product{
     public void setPremiumToppings(List<PremiumToppings> premiumToppings) {
         this.premiumToppings = premiumToppings;
     }
+
+    // Adds regular topping to the sandwich
     public void addRegularToppings(RegularToppings toppings){
     RegularToppings.add(toppings);
     }
-
+    // Adds premium topping to the sandwich
     public void addPremiumToppings(PremiumToppings toppings){
     PremiumToppings.add(toppings);
     }

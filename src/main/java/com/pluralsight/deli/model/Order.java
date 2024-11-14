@@ -42,15 +42,17 @@ public class Order {
     }
 
     public double getPrice() {
-        return price;
+        return totalPrice;
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        this.totalPrice = price;
     }
 
+    // date and time for receipt
    DateTimeFormatter format = new DateTimeFormatterBuilder("yyyyMMdd-HHmmss");
         this.dateTime = LocalDateTime.format(format);
 }
 // add item
+
 // get total price
