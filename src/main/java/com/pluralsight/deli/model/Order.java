@@ -1,57 +1,54 @@
 package com.pluralsight.deli.model;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
+import java.util.ArrayList;
 
 public class Order {
     private int id;
     private String customer;
-    private Sandwich sandwich;
-    private double totalPrice;
+    private ArrayList<Product> products = new ArrayList<>();
 
-    public Order(int id, String customer, Sandwich sandwich, double totalPrice) {
-        this.id = id;
-        this.customer = customer;
-        this.sandwich = sandwich;
-        this.totalPrice = totalPrice;
+    public void addProduct(Product product) {
+        products.add(product);
+
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(String customer) {
-        this.customer = customer;
-    }
-
-    public Sandwich getSandwich() {
-        return sandwich;
-    }
-
-    public void setSandwich(Sandwich sandwich) {
-        this.sandwich = sandwich;
+    // date and time for receipt
+    private static void writeToFile(Order order) {
+        ArrayList<Order> result = new ArrayList<>();
+        try {
+            try {
+                FileWriter fileWriter = new FileWriter("src/main/resources/receipts.csv", true);
+                BufferedWriter bufWriter = new BufferedWriter(fileWriter);
+                // splits up the format of the csv file in correct order
+//                bufWriter.write(
+//                        order.getDate() + "|" + order.getTime() + "|" +
+//                                +"|" +
+//                                +"|" +
+//                                order.getAmount() + "\n");
+                bufWriter.close();
+            } catch (IOException e) {
+                System.out.println("File not found");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public double getPrice() {
-        return totalPrice;
-    }
+        double total = 0;
+        for (Product product : products) {
+            total += product.getPrice();
 
-    public void setPrice(double price) {
-        this.totalPrice = price;
+        }
+        return total;
     }
-
-    // date and time for receipt
-   DateTimeFormatter format = new DateTimeFormatterBuilder("yyyyMMdd-HHmmss");
-        this.dateTime = LocalDateTime.format(format);
 }
 // add item
 

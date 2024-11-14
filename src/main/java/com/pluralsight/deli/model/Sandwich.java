@@ -5,9 +5,7 @@ import com.pluralsight.deli.model.enums.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.pluralsight.deli.model.enums.SandwichSize.*;
-
-public class Sandwich extends Product{
+public class Sandwich extends Product {
     private BreadType breadType;
     private SandwichSize size;
     private boolean isToasted;
@@ -15,7 +13,7 @@ public class Sandwich extends Product{
     private List<PremiumToppings> premiumToppings;
 
     public Sandwich(String name, BreadType breadType, SandwichSize size, boolean isToasted) {
-        super(name, 0);
+        super(name);
         this.breadType = breadType;
         this.size = size;
         this.isToasted = isToasted;
@@ -51,30 +49,25 @@ public class Sandwich extends Product{
         return regularToppings;
     }
 
-    public void setRegularToppings(List<RegularToppings> regularToppings) {
-        this.regularToppings = regularToppings;
-    }
 
     public List<PremiumToppings> getPremiumToppings() {
         return premiumToppings;
     }
 
-    public void setPremiumToppings(List<PremiumToppings> premiumToppings) {
-        this.premiumToppings = premiumToppings;
-    }
 
     // Adds regular topping to the sandwich
-    public void addRegularToppings(RegularToppings toppings){
-    RegularToppings.add(toppings);
-    }
-    // Adds premium topping to the sandwich
-    public void addPremiumToppings(PremiumToppings toppings){
-    PremiumToppings.add(toppings);
+    public void addRegularTopping(RegularToppings toppings) {
+        regularToppings.add(toppings);
     }
 
+    // Adds premium topping to the sandwich
+    public void addPremiumTopping(PremiumToppings toppings) {
+        premiumToppings.add(toppings);
+    }
+    /// total price
     @Override
     public double getPrice() {
-        double total = super.getPrice();
+        double total = 0.0;
         for (PremiumToppings topping : premiumToppings) {
             if (topping.getType() == PremiumToppings.Type.MEAT) {
                 if (size == SandwichSize.SMALL) {
@@ -97,11 +90,11 @@ public class Sandwich extends Product{
         }
 
         // Add the price for the bread type
-        if (breadType == BreadType.SMALL) {
+        if (size == SandwichSize.SMALL) {
             total += 5.50;
-        } else if (breadType == BreadType.MEDIUM) {
+        } else if (size == SandwichSize.MEDIUM) {
             total += 7.00;
-        } else if (breadType == BreadType.LARGE) {
+        } else if (size == SandwichSize.LARGE) {
             total += 8.50;
         } else {
             throw new IllegalStateException("Unexpected value: " + breadType);
@@ -109,10 +102,10 @@ public class Sandwich extends Product{
 
         return total;
     }
-        // need to calculate price based on topping type bread type conditional statements
-        //look through premium topping (for loop) list
-        // if premium topping is cheese create appropriate pay scale
-        // if meat create appropriate pay scale
-    }
+    // need to calculate price based on topping type bread type conditional statements
+    //look through premium topping (for loop) list
+    // if premium topping is cheese create appropriate pay scale
+    // if meat create appropriate pay scale
 }
+
 

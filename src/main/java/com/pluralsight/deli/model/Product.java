@@ -2,13 +2,10 @@ package com.pluralsight.deli.model;
 
 public abstract class Product {
     protected String name;
-    private double price;
-
 
     // Constructor
-    public Product(String name, double price) {
+    public Product(String name) {
         this.name = name;
-        this.price = price;
     }
 
     // Getter for name
@@ -22,9 +19,7 @@ public abstract class Product {
     }
 
     // Abstract method because each product will have a difference price
-    public double getPrice() {
-        return 0;
-    }
+    public abstract double getPrice();
 }
 
 

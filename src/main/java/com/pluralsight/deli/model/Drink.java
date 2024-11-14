@@ -5,6 +5,12 @@ public class Drink extends Product{
     private final DrinkType type;
     private final DrinkSize size;
 
+    public Drink(DrinkSize size, DrinkType type) {
+        super(size.description);
+        this.type = type;
+        this.size = size;
+    }
+
     public DrinkSize getSize() {
         return size;
     }
@@ -20,12 +26,6 @@ public class Drink extends Product{
 
     public DrinkType getType() {
         return type;
-    }
-
-    public Drink(DrinkSize size, DrinkType type) {
-        super(size.description, size.getPrice());
-        this.type = type;
-        this.size = size;
     }
 
     public enum DrinkSize{
