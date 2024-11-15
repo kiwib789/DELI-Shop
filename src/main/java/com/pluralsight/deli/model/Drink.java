@@ -15,14 +15,6 @@ public class Drink extends Product{
         return size;
     }
 
-    @Override
-    public String toString() {
-        return "Drink{" +
-                "type=" + type.description +
-                ", size=" + size.description +
-                ", price=" + size.price +
-                '}';
-    }
 
     public DrinkType getType() {
         return type;
@@ -76,6 +68,14 @@ public class Drink extends Product{
     public double getPrice() {
 
         return DrinkSize.SMALL.getPrice();
+    }
+    @Override
+    public String toString() {
+        return "Drink{" +
+                "type=" + type.description +
+                ", size=" + size.description +
+                ", price=" + size.price +
+                '}';
     }
 }
 

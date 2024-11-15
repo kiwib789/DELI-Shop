@@ -7,6 +7,9 @@ import com.pluralsight.deli.model.enums.SandwichSize;
 
 public class Program {
     public static void main(String[] args) {
+        UI ui = new UI();
+        ui.displayHomeScreen();
+
         Order o = new Order();
 
         Sandwich s = new Sandwich("Roast beef sub", BreadType.WHEAT, SandwichSize.MEDIUM,true  );
@@ -19,5 +22,7 @@ public class Program {
 
         o.addProduct(new Sandwich("Empty", BreadType.WHITE, SandwichSize.SMALL, false));
         System.out.println("your order costs " + o.getPrice());
+
     }
+
 }

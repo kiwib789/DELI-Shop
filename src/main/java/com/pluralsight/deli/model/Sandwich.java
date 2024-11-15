@@ -9,8 +9,8 @@ public class Sandwich extends Product {
     private BreadType breadType;
     private SandwichSize size;
     private boolean isToasted;
-    private List<RegularToppings> regularToppings;
-    private List<PremiumToppings> premiumToppings;
+    private final List<RegularToppings> regularToppings;
+    private final List<PremiumToppings> premiumToppings;
 
     public Sandwich(String name, BreadType breadType, SandwichSize size, boolean isToasted) {
         super(name);
