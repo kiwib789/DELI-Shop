@@ -13,34 +13,14 @@ public class Order {
     private String customer;
     private ArrayList<Product> products = new ArrayList<>();
 
+
+    // add item
     public void addProduct(Product product) {
         products.add(product);
 
     }
 
-//
-//    // date and time for receipt
-//    private static void writeToFile(Order order) {
-//        ArrayList<Order> result = new ArrayList<>();
-//        try {
-//            try {
-//                FileWriter fileWriter = new FileWriter("src/main/resources/receipts.csv", true);
-//                BufferedWriter bufWriter = new BufferedWriter(fileWriter);
-//                // splits up the format of the csv file in correct order
-////                bufWriter.write(
-////                        order.getDate() + "|" + order.getTime() + "|" +
-////                                +"|" +
-////                                +"|" +
-////                                order.getAmount() + "\n");
-//                bufWriter.close();
-//            } catch (IOException e) {
-//                System.out.println("File not found");
-//            }
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-
+    // get total price
     public double getPrice() {
         double total = 0;
         for (Product product : products) {
@@ -51,6 +31,4 @@ public class Order {
     }
 
 }
-// add item
 
-// get total price
