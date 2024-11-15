@@ -4,7 +4,7 @@ import com.pluralsight.deli.model.Order;
 
 import java.util.Scanner;
 
-public class HomeScreen {
+public class HomeScreen extends OrderScreen{
 
     public void displayHomeScreen() {
 
@@ -28,7 +28,7 @@ public class HomeScreen {
             // Works with user input based on which answer they pick and takes them to the next screen
             switch (userInput) {
                 case "1":
-                    addSandwich();
+                   displayOrderScreen();
                     break;
 
                 case "0":
@@ -42,7 +42,4 @@ public class HomeScreen {
         }
     }
 
-    private void addSandwich() {
-
-    }
 }

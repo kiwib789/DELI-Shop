@@ -7,8 +7,7 @@ import com.pluralsight.deli.model.enums.SandwichSize;
 
 public class Program {
     public static void main(String[] args) {
-        UI ui = new UI();
-        ui.displayHomeScreen();
+
 
         Order o = new Order();
 

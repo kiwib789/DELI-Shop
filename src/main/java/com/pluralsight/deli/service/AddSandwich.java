@@ -1,5 +1,6 @@
 package com.pluralsight.deli.service;
 
+import com.pluralsight.deli.model.Order;
 import com.pluralsight.deli.model.enums.BreadType;
 import com.pluralsight.deli.model.enums.PremiumToppings;
 import com.pluralsight.deli.model.enums.RegularToppings;
@@ -7,7 +8,7 @@ import com.pluralsight.deli.model.enums.SandwichSize;
 
 import java.util.Scanner;
 
-public class AddSandwich{
+public class AddSandwich extends OrderScreen {
 
     Scanner scanner = new Scanner(System.in);
 

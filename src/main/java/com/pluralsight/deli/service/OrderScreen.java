@@ -3,6 +3,8 @@ package com.pluralsight.deli.service;
 import com.pluralsight.deli.model.Chips;
 import com.pluralsight.deli.model.Drink;
 import com.pluralsight.deli.model.Sandwich;
+import com.pluralsight.deli.model.enums.BreadType;
+import com.pluralsight.deli.model.enums.SandwichSize;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +15,7 @@ public class OrderScreen{
     private List<Drink> drinks = new ArrayList<>();
     private List<Chips> chips = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
-    public void OrderDisplay(){
+    public void displayOrderScreen(){
 
 
 
@@ -40,19 +42,19 @@ public class OrderScreen{
             switch (userInput) {
                 case "1":
                     System.out.println("Add a sandwich ");
-                    //addSandwich();  // TODO create method
+                    addSandwich();  // TODO create method
                     break;
                 case "2":
                     System.out.println("Add a drink ");
-                   // addDrink();  //TODO create method
+                   addDrink();  //TODO create method
                     break;
                 case "3":
                     System.out.println("Add chips ");
-                  //  addChips(); // TODO create method
+                  addChips(); // TODO create method
                     break;
                 case "4":
                     System.out.println("Checkout ");
-                    //checkOutDisplay(); // TODO
+                     checkOutDisplay(); // TODO
                     break;
                 case "0":
                     System.out.println("Cancel order and return to home page ");
@@ -64,6 +66,19 @@ public class OrderScreen{
                     break;
             }
         }
+    }
+
+    private void addChips() {
+
+    }
+
+    private void addDrink() {
+
+    }
+
+    private void addSandwich() {
+
+
     }
 }
 //private void addSandwich(){
