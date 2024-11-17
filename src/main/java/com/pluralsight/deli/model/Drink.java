@@ -7,12 +7,14 @@ public class Drink extends Product{
     private final DrinkType type;
     private final DrinkSize size;
 
+    // constructor
     public Drink(DrinkSize size, DrinkType type) {
         super(size.description);
         this.type = type;
         this.size = size;
     }
 
+     // getters
     public DrinkSize getSize() {
         return size;
     }

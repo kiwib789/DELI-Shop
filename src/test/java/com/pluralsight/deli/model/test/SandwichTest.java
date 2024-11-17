@@ -1,10 +1,10 @@
 package com.pluralsight.deli.model.test;
 
 import com.pluralsight.deli.model.Sandwich;
-import com.pluralsight.deli.model.enums.BreadType;
-import com.pluralsight.deli.model.enums.PremiumToppings;
-import com.pluralsight.deli.model.enums.RegularToppings;
-import com.pluralsight.deli.model.enums.SandwichSize;
+import com.pluralsight.deli.enums.BreadType;
+import com.pluralsight.deli.enums.PremiumToppings;
+import com.pluralsight.deli.enums.RegularToppings;
+import com.pluralsight.deli.enums.SandwichSize;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

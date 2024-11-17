@@ -1,4 +1,4 @@
-package com.pluralsight.deli.utility;
+package com.pluralsight.deli.receipt;
     import com.pluralsight.deli.model.Order;
 
     import java.io.*;

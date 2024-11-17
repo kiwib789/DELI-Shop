@@ -1,4 +1,4 @@
-package com.pluralsight.deli.model.enums;
+package com.pluralsight.deli.enums;
 
 public enum Sauces {
     MAYO,

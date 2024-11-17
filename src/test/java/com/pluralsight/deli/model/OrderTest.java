@@ -1,7 +1,7 @@
 package com.pluralsight.deli.model;
 
-import com.pluralsight.deli.model.enums.BreadType;
-import com.pluralsight.deli.model.enums.SandwichSize;
+import com.pluralsight.deli.enums.BreadType;
+import com.pluralsight.deli.enums.SandwichSize;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

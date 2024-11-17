@@ -1,9 +1,9 @@
 package com.pluralsight.deli.model;
 
-import com.pluralsight.deli.model.enums.BreadType;
-import com.pluralsight.deli.model.enums.PremiumToppings;
-import com.pluralsight.deli.model.enums.RegularToppings;
-import com.pluralsight.deli.model.enums.SandwichSize;
+import com.pluralsight.deli.enums.BreadType;
+import com.pluralsight.deli.enums.PremiumToppings;
+import com.pluralsight.deli.enums.RegularToppings;
+import com.pluralsight.deli.enums.SandwichSize;
 import com.pluralsight.deli.service.UserInterface;
 
 public class Program {
@@ -15,6 +15,9 @@ public class Program {
         userInterface.displayHomeScreen();
         userInterface.displayOrderScreen();
         userInterface.addSandwichDisplay();
+        userInterface.chipsDisplay();
+        userInterface.drinkDisplay();
+        userInterface.checkOutDisplay();
 
         Sandwich s = new Sandwich("Roast beef sub", BreadType.WHEAT, SandwichSize.MEDIUM,true  );
         s.addRegularTopping(RegularToppings.LETTUCE);

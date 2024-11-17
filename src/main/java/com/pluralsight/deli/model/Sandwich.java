@@ -1,6 +1,9 @@
 package com.pluralsight.deli.model;
 
-import com.pluralsight.deli.model.enums.*;
+import com.pluralsight.deli.enums.BreadType;
+import com.pluralsight.deli.enums.PremiumToppings;
+import com.pluralsight.deli.enums.RegularToppings;
+import com.pluralsight.deli.enums.SandwichSize;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +15,8 @@ public class Sandwich extends Product {
     private final List<RegularToppings> regularToppings;
     private final List<PremiumToppings> premiumToppings;
 
+
+    // constructor
     public Sandwich(String name, BreadType breadType, SandwichSize size, boolean isToasted) {
         super(name);
         this.breadType = breadType;
@@ -20,7 +25,7 @@ public class Sandwich extends Product {
         this.regularToppings = new ArrayList<>();
         this.premiumToppings = new ArrayList<>();
     }
-
+   // getters and setters
     public BreadType getBreadType() {
         return breadType;
     }
@@ -102,10 +107,7 @@ public class Sandwich extends Product {
 
         return total;
     }
-    // need to calculate price based on topping type bread type conditional statements
-    //look through premium topping (for loop) list
-    // if premium topping is cheese create appropriate pay scale
-    // if meat create appropriate pay scale
+
 }
 
 
