@@ -1,6 +1,6 @@
 package com.pluralsight.deli.enums;
 
-public enum Sauces {
+public enum Sauces{
     MAYO,
     MUSTARD,
     KETCHUP,

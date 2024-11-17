@@ -163,7 +163,7 @@ public class UserInterface {
 
 
     // user selects the size of bread
-    private BreadType selectBreadType() {
+    private void selectBreadType() {
         boolean isRunning = true;
         BreadType breadType = null;
         while (isRunning) {
@@ -191,12 +191,11 @@ public class UserInterface {
             System.out.println("You selected: " + breadType + " bread.");
             isRunning = false;
         }
-        return breadType;
     }
 
 
     // user selects  size of sandwich
-    private SandwichSize selectSandwichSize() {
+    private void selectSandwichSize() {
         boolean isRunning = true;
         SandwichSize sandwichSize = null;
         while (isRunning) {
@@ -220,7 +219,6 @@ public class UserInterface {
             System.out.println("You selected: " + sandwichSize + " size.");
             isRunning = false;
         }
-        return sandwichSize;
     }
 
 
@@ -234,6 +232,7 @@ public class UserInterface {
                     2) Add premium toppings
                     3) Add extra meat
                     4) Add extra cheese
+                    5) Sauces
                     0) Return to sandwich
                     """);
             String toppingChoice = scanner.nextLine();
@@ -252,6 +251,9 @@ public class UserInterface {
                 case "4":
                     addExtraCheeseDisplay();
                     break;
+                case "5":
+                    addSaucesDisplay();
+                    break;
                 case "0":
                     isRunning = false;
                 default:
@@ -262,9 +264,13 @@ public class UserInterface {
         }
     }
 
+    private void addSaucesDisplay() {
+
+    }
+
 
     // user chooses regular toppings
-    private RegularToppings regularToppingsDisplay() {
+    private void regularToppingsDisplay() {
         boolean isRunning = true;
         RegularToppings regularToppings = null;
         while (isRunning) {
@@ -306,7 +312,6 @@ public class UserInterface {
 
             }
         }
-        return regularToppings;
     }
 
     private void premiumToppingsDisplay() {
@@ -334,7 +339,7 @@ public class UserInterface {
     }
 
 
-    private PremiumToppings meatToppingsDisplay() {
+    private void meatToppingsDisplay() {
         boolean isRunning = true;
         PremiumToppings meatChoice = null;
         while (isRunning) {
@@ -367,11 +372,10 @@ public class UserInterface {
             }
 
         }
-        return meatChoice;
 
     }
 
-    private PremiumToppings cheeseToppingDisplay() {
+    private void cheeseToppingDisplay() {
         boolean isRunning = true;
         PremiumToppings cheeseChoice = null;
         while (isRunning) {
@@ -399,7 +403,6 @@ public class UserInterface {
             }
 
         }
-        return cheeseChoice;
     }
 
 
