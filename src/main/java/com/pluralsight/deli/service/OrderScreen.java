@@ -10,10 +10,11 @@ import java.util.Scanner;
 
 public class OrderScreen {
     static Scanner scanner = new Scanner(System.in);
-    SandwichScreen sandwichScreen = new SandwichScreen();
+    static SandwichScreen sandwichScreen = new SandwichScreen();
     DrinkScreen drinkScreen = new DrinkScreen();
     ChipsScreen chipsScreen = new ChipsScreen();
-    CheckOutScreen checkOutScreen = new CheckOutScreen;
+    CheckOutScreen checkOutScreen = new CheckOutScreen();
+
     public static void displayOrderScreen() {
 
 
@@ -40,7 +41,7 @@ public class OrderScreen {
             switch (userInput) {
                 case "1":
                     System.out.println("Add a sandwich ");
-                    SandwichScreen.addSandwichDisplay();
+                    sandwichScreen.addSandwichDisplay();
                     break;
                 case "2":
                     System.out.println("Add a drink ");

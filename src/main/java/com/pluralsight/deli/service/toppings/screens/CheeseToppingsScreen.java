@@ -5,9 +5,9 @@ import com.pluralsight.deli.enums.PremiumToppings;
 import java.util.Scanner;
 
 public class CheeseToppingsScreen {
-    Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
 
-    public void cheeseToppingDisplay() {
+    public static void cheeseToppingDisplay() {
         boolean isRunning = true;
         PremiumToppings cheeseChoice = null;
         while (isRunning) {

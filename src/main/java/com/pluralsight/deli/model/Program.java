@@ -4,7 +4,9 @@ import com.pluralsight.deli.enums.BreadType;
 import com.pluralsight.deli.enums.PremiumToppings;
 import com.pluralsight.deli.enums.RegularToppings;
 import com.pluralsight.deli.enums.SandwichSize;
-import com.pluralsight.deli.service.UserInterface;
+import com.pluralsight.deli.service.*;
+import com.pluralsight.deli.service.drink.screens.DrinkScreen;
+import com.pluralsight.deli.service.sandwich.screens.SandwichScreen;
 
 public class Program {
     public static void main(String[] args) {
@@ -12,12 +14,11 @@ public class Program {
 
         Order o = new Order();
         UserInterface userInterface = new UserInterface(o);
-        userInterface.displayHomeScreen();
-        userInterface.displayOrderScreen();
-        userInterface.addSandwichDisplay();
-        userInterface.chipsDisplay();
-        userInterface.drinkDisplay();
-        userInterface.checkOutDisplay();
+        HomeScreen.displayHomeScreen();
+        OrderScreen.displayOrderScreen();
+        ChipsScreen.chipsDisplay();
+        DrinkScreen.drinkDisplay();
+        CheckOutScreen.checkOutDisplay();
 
         Sandwich s = new Sandwich("Roast beef sub", BreadType.WHEAT, SandwichSize.MEDIUM,true  );
         s.addRegularTopping(RegularToppings.LETTUCE);

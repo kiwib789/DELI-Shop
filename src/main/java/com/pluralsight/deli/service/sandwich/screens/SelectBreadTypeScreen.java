@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 public class SelectBreadTypeScreen {
     static Scanner scanner = new Scanner(System.in);
-    public static void selectBreadType() {
+
+    public static BreadType selectBreadType() {
         boolean isRunning = true;
         BreadType breadType = null;
         while (isRunning) {
@@ -31,9 +32,17 @@ public class SelectBreadTypeScreen {
                     System.out.println("Invalid choice. Please choose 0-4.");
                     continue;
             }
-            System.out.println("You selected: " + breadType + " bread.");
-            isRunning = false;
-        }
-    }
+            if (breadType != null) {
+                System.out.println("You selected: " + breadType + " bread.");
+                isRunning = false;
 
+        }
+            else {
+                System.out.println("No bread selected.");
+            }
+
+        }
+
+        return breadType;
+    }
 }

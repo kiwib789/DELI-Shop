@@ -5,10 +5,10 @@ import com.pluralsight.deli.enums.PremiumToppings;
 import java.util.Scanner;
 
 public class PremiumToppingsScreen {
-    Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
     CheeseToppingsScreen cheeseToppingsScreen = new CheeseToppingsScreen();
     MeatToppingsScreen meatToppingsScreen = new MeatToppingsScreen();
-    public void premiumToppingsDisplay() {
+    public static void premiumToppingsDisplay() {
         boolean isRunning = true;
         PremiumToppings premiumToppings = null;
         while (isRunning) {

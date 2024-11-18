@@ -8,15 +8,17 @@ import com.pluralsight.deli.service.toppings.screens.SelectToppingsScreen;
 
 import java.util.Scanner;
 
+import static com.pluralsight.deli.service.sandwich.screens.SelectBreadTypeScreen.selectBreadType;
+
 public class SandwichScreen {
     static Scanner scanner = new Scanner(System.in);
-    SelectBreadTypeScreen selectBreadType = new SelectBreadTypeScreen();
+    static SelectBreadTypeScreen selectBreadType = new SelectBreadTypeScreen();
     SelectSandwichSizeScreen selectSandwichSize = new SelectSandwichSizeScreen();
     SelectToppingsScreen selectToppingsScreen = new SelectToppingsScreen();
     ToastedScreen toastedScreen = new ToastedScreen();
     CustomizationScreen customizationScreen = new CustomizationScreen();
 
-    public static void addSandwichDisplay() {
+    public void addSandwichDisplay() {
         boolean isRunning = true;
 
         BreadType breadType = null;
@@ -39,16 +41,16 @@ public class SandwichScreen {
 
             switch (userInput) {
                 case "1":
-                    SelectBreadTypeScreen.selectBreadType();
+                    breadType = selectBreadType.selectBreadType();
                     break;
 
                 case "2":
-                    SelectSandwichSizeScreen.selectSandwichSize();
+                    sandwichSize = selectSandwichSize.selectSandwichSize();
                     break;
 
                 case "3":
                     //  Regular + Premium
-                    SelectToppingsScreen.selectToppings();
+                    premiumToppings.selectToppings();
                     break;
 
                 case "4":
@@ -57,7 +59,7 @@ public class SandwichScreen {
                     break;
 
                 case "0":
-                    CustomizationScreen.finishCustomization(null, null, null, null, isToasted);
+                    CustomizationScreen.finishCustomization(breadType, sandwichSize, regularToppings, premiumToppings, isToasted);
                     isRunning = false;
                     break;
 

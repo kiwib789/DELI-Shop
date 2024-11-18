@@ -5,9 +5,9 @@ import com.pluralsight.deli.enums.RegularToppings;
 import java.util.Scanner;
 
 public class RegularToppingsScreen {
- Scanner scanner = new Scanner(System.in);
+static Scanner scanner = new Scanner(System.in);
 
-    public void regularToppingsDisplay() {
+    public static void regularToppingsDisplay() {
         boolean isRunning = true;
         RegularToppings regularToppings = null;
         while (isRunning) {

@@ -1,7 +1,7 @@
 package com.pluralsight.deli.service.toppings.screens;
 
 public class AddExtraCheeseScreen {
-    public void addExtraCheeseDisplay() {
+    public static void addExtraCheeseDisplay() {
         boolean isRunning = true;
 
         while (isRunning) {

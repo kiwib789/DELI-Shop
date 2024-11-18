@@ -5,8 +5,8 @@ import com.pluralsight.deli.enums.PremiumToppings;
 import java.util.Scanner;
 
 public class MeatToppingsScreen {
-    Scanner scanner = new Scanner(System.in);
-    public void meatToppingsDisplay() {
+    static Scanner scanner = new Scanner(System.in);
+    public static void meatToppingsDisplay() {
         boolean isRunning = true;
         PremiumToppings meatChoice = null;
         while (isRunning) {

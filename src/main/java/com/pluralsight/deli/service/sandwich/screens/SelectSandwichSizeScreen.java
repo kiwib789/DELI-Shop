@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class SelectSandwichSizeScreen {
     static Scanner scanner = new Scanner(System.in);
 
-    public static void selectSandwichSize() {
+    public SandwichSize selectSandwichSize() {
         boolean isRunning = true;
         SandwichSize sandwichSize = null;
         while (isRunning) {
@@ -31,6 +31,8 @@ public class SelectSandwichSizeScreen {
             System.out.println("You selected: " + sandwichSize + " size.");
             isRunning = false;
         }
+        return sandwichSize;
     }
+
 
 }

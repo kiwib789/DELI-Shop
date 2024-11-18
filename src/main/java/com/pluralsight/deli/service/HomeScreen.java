@@ -20,7 +20,7 @@ public class HomeScreen {
         this.order = order;
     }
     // home screen
-    public void displayHomeScreen() {
+    public static void displayHomeScreen() {
 
         Scanner scanner = new Scanner(System.in);
 

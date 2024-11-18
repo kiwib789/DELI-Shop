@@ -6,12 +6,12 @@ import com.pluralsight.deli.enums.RegularToppings;
 import java.util.Scanner;
 
 public class SelectToppingsScreen {
-Scanner scanner = new Scanner(System.in);
+static Scanner scanner = new Scanner(System.in);
 RegularToppingsScreen regularToppingsScreen = new RegularToppingsScreen();
 AddExtraMeatScreen addExtraMeatScreen = new AddExtraMeatScreen();
 AddExtraCheeseScreen addExtraCheeseScreen = new AddExtraCheeseScreen();
 SaucesScreen saucesScreen = new SaucesScreen();
-    public void selectToppings() {
+    public static void selectToppings() {
         boolean isRunning = true;
         while (isRunning) {
             System.out.println("""
