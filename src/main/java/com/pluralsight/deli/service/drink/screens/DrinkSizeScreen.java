@@ -25,15 +25,19 @@ public class DrinkSizeScreen {
                     break;
                 case "0":
                     isRunning = false;
+                    break;
                 default:
                     System.out.println("Invalid choice. Please choose 0-3");
             }
-            System.out.println("You selected: " + selectDrinkSize + " size.");
-            isRunning = false;
+            if (selectDrinkSize != null) {
+                System.out.println("You selected: " + selectDrinkSize + " size.");
+                isRunning = false;
+            }
         }
         return selectDrinkSize;
     }
-
-
 }
+
+
+
 

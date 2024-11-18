@@ -13,6 +13,7 @@ AddExtraCheeseScreen addExtraCheeseScreen = new AddExtraCheeseScreen();
 SaucesScreen saucesScreen = new SaucesScreen();
     public static PremiumToppings selectToppings() {
         boolean isRunning = true;
+        PremiumToppings premiumToppings = null;
         while (isRunning) {
             System.out.println("""
                     Please choose the following options for your toppings:
@@ -24,7 +25,7 @@ SaucesScreen saucesScreen = new SaucesScreen();
                     0) Return to sandwich
                     """);
             String toppingChoice = scanner.nextLine();
-            PremiumToppings premiumToppings = null;
+            premiumToppings = null;
             RegularToppings regularToppings = null;
             switch (toppingChoice) {
                 case "1":
@@ -46,11 +47,12 @@ SaucesScreen saucesScreen = new SaucesScreen();
                     isRunning = false;
                 default:
                     System.out.println("Invalid choice. Please choose 0-4");
-                    return premiumToppings;
+                    continue;
 
             }
+
         }
-        return null;
+        return premiumToppings;
     }
 
 }

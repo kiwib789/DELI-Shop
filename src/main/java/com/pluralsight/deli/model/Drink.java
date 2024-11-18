@@ -63,10 +63,10 @@ public class Drink extends Product{
     public double getPrice(DrinkSize drinkSize) {
         if (drinkSize == DrinkSize.SMALL) {
             return DrinkSize.SMALL.price;
-        } else if (drinkSize == DrinkSize.medium) {
-            return DrinkSize.medium.price;
+        } else if (drinkSize == DrinkSize.MEDIUM) {
+            return DrinkSize.MEDIUM.price;
         } else {
-            return DrinkSize.large.price;
+            return DrinkSize.LARGE.price;
         }
     }
 

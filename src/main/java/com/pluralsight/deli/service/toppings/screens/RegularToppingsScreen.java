@@ -2,52 +2,88 @@ package com.pluralsight.deli.service.toppings.screens;
 
 import com.pluralsight.deli.enums.RegularToppings;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class RegularToppingsScreen {
-static Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
 
-    public static void regularToppingsDisplay() {
+    public static List<RegularToppings> regularToppingsDisplay() {
         boolean isRunning = true;
-        RegularToppings regularToppings = null;
+        List<RegularToppings> selectedToppings = new ArrayList<>();
+
         while (isRunning) {
-            System.out.println("Please select which regular toppings you want");
+            System.out.println("""
+                Please select which regular toppings you want to add (multiple selections allowed):
+                1) Lettuce
+                2) Peppers
+                3) Onions
+                4) Tomatoes
+                5) Jalapenos
+                6) Cucumbers
+                7) Pickles
+                8) Guacamole
+                9) Mushrooms
+                0) Done selecting
+                """);
+
             String toppingChoice = scanner.nextLine();
+
             switch (toppingChoice) {
                 case "1":
-                    regularToppings = RegularToppings.LETTUCE;
+                    selectedToppings.add(RegularToppings.LETTUCE);
                     break;
                 case "2":
-                    regularToppings = RegularToppings.PEPPERS;
+                    selectedToppings.add(RegularToppings.PEPPERS);
                     break;
                 case "3":
-                    regularToppings = RegularToppings.ONIONS;
+                    selectedToppings.add(RegularToppings.ONIONS);
                     break;
                 case "4":
-                    regularToppings = RegularToppings.TOMATOES;
+                    selectedToppings.add(RegularToppings.TOMATOES);
                     break;
                 case "5":
-                    regularToppings = RegularToppings.JALAPENOS;
+                    selectedToppings.add(RegularToppings.JALAPENOS);
                     break;
                 case "6":
-                    regularToppings = RegularToppings.CUCUMBERS;
+                    selectedToppings.add(RegularToppings.CUCUMBERS);
                     break;
                 case "7":
-                    regularToppings = RegularToppings.PICKLES;
+                    selectedToppings.add(RegularToppings.PICKLES);
                     break;
                 case "8":
-                    regularToppings = RegularToppings.GUACAMOLE;
+                    selectedToppings.add(RegularToppings.GUACAMOLE);
                     break;
                 case "9":
-                    regularToppings = RegularToppings.MUSHROOMS;
+                    selectedToppings.add(RegularToppings.MUSHROOMS);
                     break;
                 case "0":
                     isRunning = false;
+                    break;
                 default:
                     System.out.println("Invalid choice. Please choose 0-9.");
+                    continue;
+            }
 
-
+            if (!toppingChoice.equals("0")) {
+                System.out.println("Would you like to add another topping? (yes/no)");
+                String continueChoice = scanner.nextLine();
+                if (continueChoice.equalsIgnoreCase("n")) {
+                    isRunning = false;
+                }
             }
         }
+
+        if (selectedToppings.isEmpty()) {
+            System.out.println("No regular toppings selected.");
+        } else {
+            System.out.println("You selected the following regular toppings:");
+            for (RegularToppings topping : selectedToppings) {
+                System.out.println(" " + topping);
+            }
+        }
+
+        return selectedToppings;
     }
 }

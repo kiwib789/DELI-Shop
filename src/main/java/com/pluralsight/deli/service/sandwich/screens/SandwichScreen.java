@@ -6,6 +6,8 @@ import com.pluralsight.deli.enums.RegularToppings;
 import com.pluralsight.deli.enums.SandwichSize;
 import com.pluralsight.deli.service.toppings.screens.SelectToppingsScreen;
 
+import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class SandwichScreen {
@@ -21,7 +23,7 @@ public class SandwichScreen {
 
         BreadType breadType = null;
         SandwichSize sandwichSize = null;
-        RegularToppings regularToppings = null;
+        PremiumToppings regularToppings = null;
         PremiumToppings premiumToppings = null;
         boolean isToasted = false;
 
@@ -49,10 +51,9 @@ public class SandwichScreen {
                 case "3":
                     //  Regular + Premium
                     premiumToppings = selectToppings.selectToppings();
+                    regularToppings = selectToppings.selectToppings();
                     break;
-
                 case "4":
-
                     ToastedScreen.selectToastedOption();
                     break;
 

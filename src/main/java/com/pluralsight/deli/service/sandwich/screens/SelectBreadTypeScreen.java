@@ -37,9 +37,6 @@ public class SelectBreadTypeScreen {
                 isRunning = false;
 
         }
-            else {
-                System.out.println("No bread selected.");
-            }
 
         }
 

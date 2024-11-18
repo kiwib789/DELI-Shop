@@ -6,11 +6,12 @@ import java.util.Scanner;
 
 public class MeatToppingsScreen {
     static Scanner scanner = new Scanner(System.in);
-    public static void meatToppingsDisplay() {
+
+    public static PremiumToppings meatToppingsDisplay() {
         boolean isRunning = true;
         PremiumToppings meatChoice = null;
         while (isRunning) {
-            System.out.println(" Please choose a meat:\n 1) Steak\n 2) Ham \n3) Salami \n4) Roast beef \n5) Chicken \n6) Bacon \n0) None");
+            System.out.println(" Please choose a meat:\n1) Steak\n2) Ham \n3) Salami \n4) Roast beef \n5) Chicken \n6) Bacon \n0) None");
             String meatChosen = scanner.nextLine();
             switch (meatChosen) {
                 case "1":
@@ -37,8 +38,13 @@ public class MeatToppingsScreen {
                     System.out.println("Invalid choice. Please choose 0-6");
                     continue;
             }
+            if (meatChoice != null) {
+                System.out.println("You selected: " + meatChoice + " topping.");
+                isRunning = false;
+
+            }
 
         }
-
+        return meatChoice;
     }
 }
