@@ -2,7 +2,7 @@ package com.pluralsight.deli.model;
 
 import jdk.internal.icu.text.UnicodeSet;
 
-public class Drink extends Product{
+public class Drink extends Product {
 
     private final DrinkType type;
     private final DrinkSize size;
@@ -15,7 +15,7 @@ public class Drink extends Product{
 
     }
 
-     // getters
+    // getters
     public DrinkSize getSize() {
 
         return size;
@@ -27,10 +27,10 @@ public class Drink extends Product{
         return type;
     }
 
-    public enum DrinkSize{
+    public enum DrinkSize {
         SMALL("Small", 2.00),
-        medium("Medium", 2.50),
-        large("Large",3.00);
+        MEDIUM("Medium", 2.50),
+        LARGE("Large", 3.00);
 
         private final String description;
         private final double price;
@@ -62,22 +62,17 @@ public class Drink extends Product{
         }
     }
 
-    public double getPrice(DrinkSize drinkSize) {
-        if (drinkSize == DrinkSize.SMALL) {
+    public double getPrice() {
+        if (size == DrinkSize.SMALL) {
             return DrinkSize.SMALL.price;
-        } else if (drinkSize == DrinkSize.medium) {
-            return DrinkSize.medium.price;
+        } else if (size == DrinkSize.MEDIUM) {
+            return DrinkSize.MEDIUM.price;
         } else {
-            return DrinkSize.large.price;
+            return DrinkSize.LARGE.price;
         }
     }
 
 
-    @Override
-    public double getPrice() {
-
-        return DrinkSize.SMALL.getPrice();
-    }
     @Override
     public String toString() {
         return "Drink{" +
