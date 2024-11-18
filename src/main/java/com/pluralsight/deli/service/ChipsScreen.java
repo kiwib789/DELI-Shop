@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 public class ChipsScreen {
     static Scanner scanner = new Scanner(System.in);
-    public static void chipsDisplay() {
+
+    public static ChipType chipsDisplay() {
         boolean isRunning = true;
         ChipType chipType = null;
         while (isRunning) {
@@ -40,7 +41,13 @@ public class ChipsScreen {
                     System.out.println("Invalid choice. Please choose 1,2,3,4,0");
                     continue;
             }
-        }
+            if (chipType != null) {
+                System.out.println("You selected: " + chipType + " chips.");
+                isRunning = false;
 
+            }
+
+        }
+        return chipType;
     }
 }

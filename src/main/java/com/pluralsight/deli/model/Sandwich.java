@@ -104,6 +104,7 @@ public class Sandwich extends Product {
         } else {
             throw new IllegalStateException("Unexpected value: " + breadType);
         }
+        // add extra cheese and meat
 
         return total;
     }

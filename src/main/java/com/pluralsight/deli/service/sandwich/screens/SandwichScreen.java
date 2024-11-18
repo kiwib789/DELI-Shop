@@ -8,13 +8,11 @@ import com.pluralsight.deli.service.toppings.screens.SelectToppingsScreen;
 
 import java.util.Scanner;
 
-import static com.pluralsight.deli.service.sandwich.screens.SelectBreadTypeScreen.selectBreadType;
-
 public class SandwichScreen {
     static Scanner scanner = new Scanner(System.in);
     static SelectBreadTypeScreen selectBreadType = new SelectBreadTypeScreen();
     SelectSandwichSizeScreen selectSandwichSize = new SelectSandwichSizeScreen();
-    SelectToppingsScreen selectToppingsScreen = new SelectToppingsScreen();
+    SelectToppingsScreen selectToppings = new SelectToppingsScreen();
     ToastedScreen toastedScreen = new ToastedScreen();
     CustomizationScreen customizationScreen = new CustomizationScreen();
 
@@ -50,7 +48,7 @@ public class SandwichScreen {
 
                 case "3":
                     //  Regular + Premium
-                    premiumToppings.selectToppings();
+                    premiumToppings = selectToppings.selectToppings();
                     break;
 
                 case "4":

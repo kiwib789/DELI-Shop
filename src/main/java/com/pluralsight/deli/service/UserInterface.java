@@ -20,22 +20,7 @@ public class UserInterface {
     public UserInterface(Order order) {
         this.order = order;
     }
-    // home screen
 
-
-
-
-
-
-
-
-    // user selects  size of sandwich
-
-
-
-
-
-    // user chooses regular toppings
 
 
 

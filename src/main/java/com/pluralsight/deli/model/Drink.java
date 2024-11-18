@@ -27,8 +27,8 @@ public class Drink extends Product{
 
     public enum DrinkSize{
         SMALL("Small", 2.00),
-        medium("Medium", 2.50),
-        large("Large",3.00);
+        MEDIUM("Medium", 2.50),
+        LARGE("Large",3.00);
 
         private final String description;
         private final double price;

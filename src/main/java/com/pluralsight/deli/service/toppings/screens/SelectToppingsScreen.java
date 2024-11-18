@@ -11,7 +11,7 @@ RegularToppingsScreen regularToppingsScreen = new RegularToppingsScreen();
 AddExtraMeatScreen addExtraMeatScreen = new AddExtraMeatScreen();
 AddExtraCheeseScreen addExtraCheeseScreen = new AddExtraCheeseScreen();
 SaucesScreen saucesScreen = new SaucesScreen();
-    public static void selectToppings() {
+    public static PremiumToppings selectToppings() {
         boolean isRunning = true;
         while (isRunning) {
             System.out.println("""
@@ -46,10 +46,11 @@ SaucesScreen saucesScreen = new SaucesScreen();
                     isRunning = false;
                 default:
                     System.out.println("Invalid choice. Please choose 0-4");
-                    return;
+                    return premiumToppings;
 
             }
         }
+        return null;
     }
 
 }
