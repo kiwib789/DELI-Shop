@@ -15,6 +15,7 @@ public class CustomizationScreen {
         System.out.println("Regular Toppings: " + (regularToppings != null ? regularToppings : "None"));
         System.out.println("Premium Toppings: " + (premiumToppings != null ? premiumToppings : "None"));
         System.out.println("Toasted: " + (isToasted ? "Yes" : "No"));
+        System.out.println("Total price: $");
     }
 
 }
