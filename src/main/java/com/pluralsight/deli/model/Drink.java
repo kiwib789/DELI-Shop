@@ -27,8 +27,8 @@ public class Drink extends Product{
 
     public enum DrinkSize{
         SMALL("Small", 2.00),
-        MEDIUM("Medium", 2.50),
-        LARGE("Large",3.00);
+        medium("Medium", 2.50),
+        large("Large",3.00);
 
         private final String description;
         private final double price;
@@ -63,10 +63,10 @@ public class Drink extends Product{
     public double getPrice(DrinkSize drinkSize) {
         if (drinkSize == DrinkSize.SMALL) {
             return DrinkSize.SMALL.price;
-        } else if (drinkSize == DrinkSize.MEDIUM) {
-            return DrinkSize.MEDIUM.price;
+        } else if (drinkSize == DrinkSize.medium) {
+            return DrinkSize.medium.price;
         } else {
-            return DrinkSize.LARGE.price;
+            return DrinkSize.large.price;
         }
     }
 
