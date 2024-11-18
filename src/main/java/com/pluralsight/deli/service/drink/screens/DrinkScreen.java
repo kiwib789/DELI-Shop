@@ -1,10 +1,11 @@
 package com.pluralsight.deli.service.drink.screens;
 
 import com.pluralsight.deli.model.Order;
+import com.pluralsight.deli.service.HomeScreen;
 
 import java.util.Scanner;
 
-public class DrinkScreen {
+public class DrinkScreen extends HomeScreen {
     static Scanner scanner = new Scanner(System.in);
     DrinkSizeScreen drinkSizeScreen = new DrinkSizeScreen();
     DrinkFlavorScreen drinkFlavorScreen = new DrinkFlavorScreen();

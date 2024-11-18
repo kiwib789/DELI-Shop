@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class HomeScreen {
+public abstract class HomeScreen {
     Scanner scanner = new Scanner(System.in);
     private Order order;
     private List<Sandwich> sandwiches = new ArrayList<>();

@@ -4,11 +4,12 @@ import com.pluralsight.deli.enums.BreadType;
 import com.pluralsight.deli.enums.PremiumToppings;
 import com.pluralsight.deli.enums.SandwichSize;
 import com.pluralsight.deli.model.Order;
+import com.pluralsight.deli.service.HomeScreen;
 import com.pluralsight.deli.service.toppings.screens.SelectToppingsScreen;
 
 import java.util.Scanner;
 
-public class SandwichScreen {
+public class SandwichScreen extends HomeScreen {
     static Scanner scanner = new Scanner(System.in);
     static SelectBreadTypeScreen selectBreadType = new SelectBreadTypeScreen();
     SelectSandwichSizeScreen selectSandwichSize = new SelectSandwichSizeScreen();

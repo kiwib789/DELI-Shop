@@ -1,8 +1,16 @@
 @startuml
+class com.pluralsight.deli.service.toppings.screens.CheeseToppingsScreen {
+~ {static} Scanner scanner
++ {static} PremiumToppings cheeseToppingDisplay()
+}
+
+
 class com.pluralsight.deli.model.Sandwich {
 - BreadType breadType
 - SandwichSize size
 - boolean isToasted
+- boolean extraMeat
+- boolean extraCheese
 - List<RegularToppings> regularToppings
 - List<PremiumToppings> premiumToppings
 + BreadType getBreadType()
@@ -16,10 +24,19 @@ class com.pluralsight.deli.model.Sandwich {
 + void addRegularTopping(RegularToppings)
 + void addPremiumTopping(PremiumToppings)
 + double getPrice()
++ void setExtraMeat(boolean)
++ boolean isExtraCheese()
++ void setExtraCheese(boolean)
 }
 
 
-enum com.pluralsight.deli.model.enums.PremiumToppings {
+class com.pluralsight.deli.service.drink.screens.DrinkSizeScreen {
+~ {static} Scanner scanner
++ {static} Drink.DrinkSize drinkSizeDisplay(Order)
+}
+
+
+enum com.pluralsight.deli.enums.PremiumToppings {
 +  STEAK
 +  HAM
 +  SALAMI
@@ -35,42 +52,14 @@ enum com.pluralsight.deli.model.enums.PremiumToppings {
 }
 
 
-enum com.pluralsight.deli.model.enums.Type {
+enum com.pluralsight.deli.enums.Type {
 +  MEAT
 +  CHEESE
 }
 
-enum com.pluralsight.deli.model.enums.DrinkSize {
-+  SMALL
-+  MEDIUM
-+  LARGE
-}
-
-class com.pluralsight.deli.utility.ReceiptManager {
-}
-enum com.pluralsight.deli.model.enums.RegularToppings {
-+  LETTUCE
-+  PEPPERS
-+  ONIONS
-+  TOMATOES
-+  JALAPENOS
-+  CUCUMBERS
-+  PICKLES
-+  GUACAMOLE
-+  MUSHROOMS
-}
-
-enum com.pluralsight.deli.model.enums.SandwichSize {
-+  SMALL
-+  MEDIUM
-+  LARGE
-}
-
-abstract class com.pluralsight.deli.model.Product {
-# String name
-+ String getName()
-+ void setName(String)
-+ {abstract}double getPrice()
+class com.pluralsight.deli.service.sandwich.screens.ToastedScreen {
+~ {static} Scanner scanner
++ {static} boolean selectToastedOption(Order)
 }
 
 
@@ -78,40 +67,71 @@ class com.pluralsight.deli.model.Program {
 + {static} void main(String[])
 }
 
-class com.pluralsight.deli.model.Chips {
-+ double getPrice()
-}
-
-enum com.pluralsight.deli.model.enums.Sauces {
-+  MAYO
-+  MUSTARD
-+  KETCHUP
-+  RANCH
-+  THOUSAND_ISLAND
-+  VINAIGRETTE
-+  AU_JUS
-}
-
-enum com.pluralsight.deli.model.enums.ChipType {
+enum com.pluralsight.deli.enums.ChipType {
 +  POTATO_CHIPS
 +  BBQ
 +  SOUR_CREAM
 +  SALT_AND_VINEGAR
 }
 
-class com.pluralsight.deli.utility.Receipts {
-- List<Order> orders
-+ void addOrder(Order)
-+ void writeToCSV(String)
+class com.pluralsight.deli.service.toppings.screens.SelectToppingsScreen {
+~ {static} Scanner scanner
+~ RegularToppingsScreen regularToppingsScreen
+~ AddExtraMeatScreen addExtraMeatScreen
+~ AddExtraCheeseScreen addExtraCheeseScreen
+~ SaucesScreen saucesScreen
++ {static} PremiumToppings selectToppings(Order)
 }
 
 
-enum com.pluralsight.deli.model.enums.BreadType {
+class com.pluralsight.deli.model.Chips {
+- ChipType chipType
++ double getPrice()
+}
+
+
+class com.pluralsight.deli.service.sandwich.screens.SelectSandwichSizeScreen {
+~ {static} Scanner scanner
++ SandwichSize selectSandwichSize(Order)
+}
+
+
+class com.pluralsight.deli.service.drink.screens.DrinkScreen {
+~ {static} Scanner scanner
+~ DrinkSizeScreen drinkSizeScreen
+~ DrinkFlavorScreen drinkFlavorScreen
++ {static} void drinkDisplay(Order)
+}
+
+
+enum com.pluralsight.deli.enums.SandwichSize {
++  SMALL
++  MEDIUM
++  LARGE
+}
+
+enum com.pluralsight.deli.enums.BreadType {
 +  WHITE
 +  WHEAT
 +  RYE
 +  WRAP
 }
+
+class com.pluralsight.deli.service.CheckOutScreen {
++ {static} void checkOutDisplay(Order)
+}
+
+class com.pluralsight.deli.service.sandwich.screens.SelectBreadTypeScreen {
+~ {static} Scanner scanner
++ {static} BreadType selectBreadType(Order)
+}
+
+
+class com.pluralsight.deli.service.toppings.screens.AddExtraCheeseScreen {
+~ {static} Scanner scanner
++ {static} PremiumToppings addExtraCheeseDisplay()
+}
+
 
 class com.pluralsight.deli.model.Drink {
 - DrinkType type
@@ -126,8 +146,8 @@ class com.pluralsight.deli.model.Drink {
 
 enum com.pluralsight.deli.model.DrinkSize {
 +  SMALL
-+  medium
-+  large
++  MEDIUM
++  LARGE
 - String description
 - double price
 + String getDescription()
@@ -141,31 +161,119 @@ enum com.pluralsight.deli.model.DrinkType {
 - String description
 }
 
-class com.pluralsight.deli.service.UserInterface {
+class com.pluralsight.deli.service.sandwich.screens.SandwichScreen {
+~ {static} Scanner scanner
+~ {static} SelectBreadTypeScreen selectBreadType
+~ SelectSandwichSizeScreen selectSandwichSize
+~ SelectToppingsScreen selectToppings
+~ ToastedScreen toastedScreen
+~ CustomizationScreen customizationScreen
++ void addSandwichDisplay(Order)
+}
+
+
+class com.pluralsight.deli.service.toppings.screens.SaucesScreen {
+~ {static} Scanner scanner
++ {static} Sauces addSaucesDisplay()
+}
+
+
+class com.pluralsight.deli.service.toppings.screens.MeatToppingsScreen {
+~ {static} Scanner scanner
++ {static} PremiumToppings meatToppingsDisplay()
+}
+
+
+class com.pluralsight.deli.service.ChipsScreen {
+~ {static} Scanner scanner
++ {static} Chips chipsDisplay(Order)
+}
+
+
+enum com.pluralsight.deli.enums.RegularToppings {
++  LETTUCE
++  PEPPERS
++  ONIONS
++  TOMATOES
++  JALAPENOS
++  CUCUMBERS
++  PICKLES
++  GUACAMOLE
++  MUSHROOMS
+}
+
+class com.pluralsight.deli.receipt.ReceiptManager {
++ void receipt(Order)
+}
+
+abstract class com.pluralsight.deli.model.Product {
+# String name
++ String getName()
++ void setName(String)
++ {abstract}double getPrice()
+}
+
+
+class com.pluralsight.deli.service.drink.screens.DrinkFlavorScreen {
+~ {static} Scanner scanner
++ {static} Drink.DrinkType drinkFlavorDisplay(Order)
+}
+
+
+class com.pluralsight.deli.service.toppings.screens.PremiumToppingsScreen {
+~ {static} Scanner scanner
+~ CheeseToppingsScreen cheeseToppingsScreen
+~ MeatToppingsScreen meatToppingsScreen
++ {static} void premiumToppingsDisplay()
+}
+
+
+class com.pluralsight.deli.service.OrderScreen {
+~ {static} Order order
+~ {static} Scanner scanner
+~ {static} SandwichScreen sandwichScreen
+~ DrinkScreen drinkScreen
+~ ChipsScreen chipsScreen
+~ CheckOutScreen checkOutScreen
++ {static} void displayOrderScreen()
+}
+
+
+class com.pluralsight.deli.service.toppings.screens.AddExtraMeatScreen {
+~ {static} Scanner scanner
++ {static} PremiumToppings addExtraMeatDisplay()
+}
+
+
+class com.pluralsight.deli.service.toppings.screens.RegularToppingsScreen {
+~ {static} Scanner scanner
++ {static} List<RegularToppings> regularToppingsDisplay()
+}
+
+
+class com.pluralsight.deli.service.sandwich.screens.CustomizationScreen {
++ {static} void finishCustomization(BreadType,SandwichSize,PremiumToppings,PremiumToppings,boolean)
+}
+
+enum com.pluralsight.deli.enums.Sauces {
++  MAYO
++  MUSTARD
++  KETCHUP
++  RANCH
++  THOUSAND_ISLAND
++  VINAIGRETTE
++  AU_JUS
+}
+
+abstract class com.pluralsight.deli.service.HomeScreen {
 ~ Scanner scanner
 - Order order
 - List<Sandwich> sandwiches
 - List<Drink> drinks
 - List<Chips> chips
-+ void displayHomeScreen()
-+ void displayOrderScreen()
-+ void addSandwichDisplay()
-- BreadType selectBreadType()
-- SandwichSize selectSandwichSize()
-- void selectToppings()
-- boolean selectToastedOption()
-- void finishCustomization(BreadType,SandwichSize,RegularToppings,PremiumToppings,boolean)
-- RegularToppings regularToppingsDisplay()
-- void premiumToppingsDisplay()
-+ void drinkDisplay()
-+ ChipType chipsDisplay()
-+ void checkOutDisplay()
-+ void addExtraCheeseDisplay()
-+ void addExtraMeatDisplay()
-- void meatToppingsDisplay()
-- void cheeseToppingDisplay()
-- void drinkChoiceDisplay()
-- void drinkFlavorDisplay()
+~ OrderScreen orderScreen
++ void UserInterface(Order)
++ {static} void displayHomeScreen()
 + List<Sandwich> getSandwiches()
 + void setSandwiches(List<Sandwich>)
 + Order getOrder()
@@ -183,6 +291,7 @@ class com.pluralsight.deli.model.Order {
 - ArrayList<Product> products
 + void addProduct(Product)
 + double getPrice()
++ String toString()
 }
 
 
@@ -190,5 +299,9 @@ class com.pluralsight.deli.model.Order {
 
 com.pluralsight.deli.model.Product <|-- com.pluralsight.deli.model.Sandwich
 com.pluralsight.deli.model.Product <|-- com.pluralsight.deli.model.Chips
+com.pluralsight.deli.service.HomeScreen <|-- com.pluralsight.deli.service.drink.screens.DrinkScreen
 com.pluralsight.deli.model.Product <|-- com.pluralsight.deli.model.Drink
+com.pluralsight.deli.service.HomeScreen <|-- com.pluralsight.deli.service.sandwich.screens.SandwichScreen
+com.pluralsight.deli.service.HomeScreen <|-- com.pluralsight.deli.service.toppings.screens.PremiumToppingsScreen
+com.pluralsight.deli.service.HomeScreen <|-- com.pluralsight.deli.service.toppings.screens.RegularToppingsScreen
 @enduml

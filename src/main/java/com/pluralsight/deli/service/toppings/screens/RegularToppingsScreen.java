@@ -1,12 +1,13 @@
 package com.pluralsight.deli.service.toppings.screens;
 
 import com.pluralsight.deli.enums.RegularToppings;
+import com.pluralsight.deli.service.HomeScreen;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class RegularToppingsScreen {
+public class RegularToppingsScreen extends HomeScreen {
     static Scanner scanner = new Scanner(System.in);
 
     public static List<RegularToppings> regularToppingsDisplay() {

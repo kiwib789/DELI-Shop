@@ -30,7 +30,7 @@ public class AddExtraCheeseScreen {
                     isRunning = false;
                     break;
                 default:
-                    System.out.println("Invalid choice. Please choose 0-6");
+                    System.out.println("Invalid choice. Please choose 0-4");
                     continue;
 
             }

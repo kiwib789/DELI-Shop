@@ -40,7 +40,7 @@ public class ChipsScreen {
                     isRunning = false;
                     break;
                 default:
-                    System.out.println("Invalid choice. Please choose 1,2,3,4,0");
+                    System.out.println("Invalid choice. Please choose 0-4");
                     continue;
             }
             if (chips != null) {

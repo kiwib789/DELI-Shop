@@ -47,7 +47,7 @@ SaucesScreen saucesScreen = new SaucesScreen();
                 case "0":
                     isRunning = false;
                 default:
-                    System.out.println("Invalid choice. Please choose 0-4");
+                    System.out.println("Invalid choice. Please choose 0-5");
                     continue;
 
             }

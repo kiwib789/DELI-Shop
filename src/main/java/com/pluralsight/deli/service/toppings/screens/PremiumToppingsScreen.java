@@ -1,10 +1,11 @@
 package com.pluralsight.deli.service.toppings.screens;
 
 import com.pluralsight.deli.enums.PremiumToppings;
+import com.pluralsight.deli.service.HomeScreen;
 
 import java.util.Scanner;
 
-public class PremiumToppingsScreen {
+public class PremiumToppingsScreen extends HomeScreen {
     static Scanner scanner = new Scanner(System.in);
     CheeseToppingsScreen cheeseToppingsScreen = new CheeseToppingsScreen();
     MeatToppingsScreen meatToppingsScreen = new MeatToppingsScreen();
@@ -25,7 +26,7 @@ public class PremiumToppingsScreen {
                     isRunning = false;
                     break;
                 default:
-                    System.out.println("Invalid choice. Please choose 0-9.");
+                    System.out.println("Invalid choice. Please choose 0-2.");
                     continue;
 
             }
