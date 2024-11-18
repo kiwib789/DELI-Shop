@@ -12,6 +12,7 @@ public class SelectBreadTypeScreen {
         boolean isRunning = true;
         BreadType breadType = null;
         while (isRunning) {
+            // allows user to select their choice of sandwich type and returns choice
             System.out.println("Select bread type: \n1) White \n2) Wheat \n3) Rye \n4) Wrap \n0) Exit");
             String breadChoice = scanner.nextLine();
             switch (breadChoice) {
@@ -40,7 +41,7 @@ public class SelectBreadTypeScreen {
         }
 
         }
-
+       // order.addProduct(breadType);
         return breadType;
     }
 }

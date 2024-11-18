@@ -38,6 +38,7 @@ public class CheeseToppingsScreen {
                 isRunning = false;
             }
         }
+
         return cheeseChoice;
     }
 }

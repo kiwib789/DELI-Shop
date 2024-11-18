@@ -12,6 +12,7 @@ public class DrinkFlavorScreen{
         boolean isRunning = true;
         Drink.DrinkType drinkType = null;
         while (isRunning) {
+            // allows user to select their choice of drink flavor and returns choice
             System.out.println("Please choose a drink flavor :\n 1) Sweet tea \n 2) Cola \n0) None");
             String flavorChosen = scanner.nextLine();
             switch (flavorChosen) {
@@ -34,6 +35,7 @@ public class DrinkFlavorScreen{
                 isRunning = false;
             }
         }
+        // order.addProduct(drinkType);
         return drinkType;
     }
 }

@@ -13,6 +13,7 @@ public class DrinkSizeScreen {
         boolean isRunning = true;
         Drink.DrinkSize selectDrinkSize = null;
         while (isRunning) {
+            // allows user to select their choice of drink size and returns choice
             System.out.println("Select sandwich size: \n1) Small (4 inches) \n2) Medium (8 inches) \n3) Large (12 inches) \n0) Exit");
             String sizeChoice = scanner.nextLine();
             switch (sizeChoice) {
@@ -36,6 +37,7 @@ public class DrinkSizeScreen {
                 isRunning = false;
             }
         }
+        // order.addProduct(selectDrinkSize);
         return selectDrinkSize;
     }
 }

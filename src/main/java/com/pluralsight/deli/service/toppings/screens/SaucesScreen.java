@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class SaucesScreen {
     static Scanner scanner = new Scanner(System.in);
-
+    // method for adding sauces screen
     public static Sauces addSaucesDisplay() {
         boolean isRunning = true;
         Sauces sauceChoice = null;

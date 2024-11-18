@@ -9,13 +9,14 @@ public class Program {
     public static void main(String[] args) {
 
 
-        Order o = new Order();
+     //   Order o = new Order();
         HomeScreen.displayHomeScreen();
 
 
 
         ReceiptManager receiptManager = new ReceiptManager();
-        receiptManager.receipt(o);
+        // TODO figure out where to call this
+       // receiptManager.receipt(o);
 
 //        Sandwich s = new Sandwich("Roast beef sub", BreadType.WHEAT, SandwichSize.MEDIUM,true  );
 //        s.addRegularTopping(RegularToppings.LETTUCE);

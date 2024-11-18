@@ -5,15 +5,18 @@ import com.pluralsight.deli.enums.PremiumToppings;
 import java.util.Scanner;
 
 public class AddExtraCheeseScreen {
+    // scanner to read user input
     static Scanner scanner = new Scanner(System.in);
-
+    // method to display extra cheese options
     public static PremiumToppings addExtraCheeseDisplay() {
 
         boolean isRunning = true;
         PremiumToppings extraCheeseChoice = null;
         while (isRunning) {
+            // prompts user for their choice
             System.out.println("Please choose a meat:\n1) American cheese\n2) Swiss cheese \n3) Provolone cheese \n4) Cheddar cheese\n0) None");
             String cheeseChosen = scanner.nextLine();
+            // sets users input
             switch (cheeseChosen) {
                 case "1":
                     extraCheeseChoice = PremiumToppings.AMERICAN_CHEESE;
@@ -34,6 +37,7 @@ public class AddExtraCheeseScreen {
                     continue;
 
             }
+            // prints if they chose extra meat or not and what they chose if so
             if (extraCheeseChoice != null) {
                 System.out.println("You selected extra cheese: " + extraCheeseChoice);
                 isRunning = false;
@@ -43,6 +47,7 @@ public class AddExtraCheeseScreen {
 
             }
         }
+        //returns users choice
         return extraCheeseChoice;
     }
 }

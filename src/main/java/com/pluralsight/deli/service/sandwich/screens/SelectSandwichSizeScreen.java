@@ -12,6 +12,7 @@ public class SelectSandwichSizeScreen {
         boolean isRunning = true;
         SandwichSize sandwichSize = null;
         while (isRunning) {
+            // allows user to select their choice of sandwich size and returns choice
             System.out.println("Select sandwich size: \n1) Small (4 inches) \n2) Medium (8 inches) \n3) Large (12 inches) \n0) Exit");
             String sizeChoice = scanner.nextLine();
             switch (sizeChoice) {
@@ -32,6 +33,7 @@ public class SelectSandwichSizeScreen {
             System.out.println("You selected: " + sandwichSize + " size.");
             isRunning = false;
         }
+        //order.addProduct(sandwichSize);
         return sandwichSize;
     }
 

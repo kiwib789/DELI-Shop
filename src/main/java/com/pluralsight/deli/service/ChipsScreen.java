@@ -9,6 +9,8 @@ import java.util.Scanner;
 public class ChipsScreen {
     static Scanner scanner = new Scanner(System.in);
 
+
+    // allows user to choose between chip types
     public static Chips chipsDisplay(Order order) {
         boolean isRunning = true;
         Chips chips = null;

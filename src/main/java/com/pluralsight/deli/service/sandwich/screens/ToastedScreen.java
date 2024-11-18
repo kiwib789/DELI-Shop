@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class ToastedScreen {
     static Scanner scanner = new Scanner(System.in);
-
+    // allows user to select if they want their sandwich toasted or not and returns choice
     public static boolean selectToastedOption(Order order) {
         boolean isToasted = false;
         boolean isRunning = true;
@@ -25,6 +25,7 @@ public class ToastedScreen {
                 System.out.println("Invalid input. Please type 'Yes' or 'No'.");
             }
         }
+
         return isToasted;
     }
 }

@@ -9,9 +9,11 @@ public class PremiumToppingsScreen extends HomeScreen {
     static Scanner scanner = new Scanner(System.in);
     CheeseToppingsScreen cheeseToppingsScreen = new CheeseToppingsScreen();
     MeatToppingsScreen meatToppingsScreen = new MeatToppingsScreen();
+    // method to print premium toppings screen
     public static void premiumToppingsDisplay() {
         boolean isRunning = true;
         PremiumToppings premiumToppings = null;
+        // allows user to pick their choice of premium toppings
         while (isRunning) {
             System.out.println("Please select which premium toppings you want \n 1) Meat toppings \n 2) Cheese toppings \n 0) Return to toppings");
             String toppingChoice = scanner.nextLine();
