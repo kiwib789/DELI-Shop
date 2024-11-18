@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 
 public class ReceiptManager {
 
+
 public void receipt(Order order){
    LocalDateTime timeOfOrder = LocalDateTime.now();
    DateTimeFormatter dTF = DateTimeFormatter.ofPattern("yyyyMMdd");
@@ -20,6 +21,7 @@ public void receipt(Order order){
        bufWriter.write(order.toString());
        bufWriter.flush();
        bufWriter.close();
+
    } catch (IOException e) {
        throw new RuntimeException(e);
    }
