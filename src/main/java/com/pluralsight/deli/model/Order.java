@@ -1,5 +1,7 @@
 package com.pluralsight.deli.model;
 
+import com.pluralsight.deli.enums.SandwichSize;
+
 import java.util.ArrayList;
 
 public class Order {

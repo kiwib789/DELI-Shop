@@ -19,8 +19,9 @@ public abstract class Product {
     }
 
     // Abstract method because each product will have a difference price
-
     public abstract double getPrice();
+
+
 }
 
 

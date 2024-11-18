@@ -17,8 +17,8 @@ public class Sandwich extends Product {
 
 
     // constructor
-    public Sandwich(String name, BreadType breadType, SandwichSize size, boolean isToasted) {
-        super(name);
+    public Sandwich(Sandwich sandwich, BreadType breadType, SandwichSize size, boolean isToasted) {
+        super(sandwich.name);
         this.breadType = breadType;
         this.size = size;
         this.isToasted = isToasted;
