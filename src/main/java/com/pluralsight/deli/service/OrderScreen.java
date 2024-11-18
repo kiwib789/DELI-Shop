@@ -2,6 +2,7 @@ package com.pluralsight.deli.service;
 
 import com.pluralsight.deli.model.Chips;
 import com.pluralsight.deli.model.Drink;
+import com.pluralsight.deli.model.Order;
 import com.pluralsight.deli.model.Sandwich;
 import com.pluralsight.deli.service.drink.screens.DrinkScreen;
 import com.pluralsight.deli.service.sandwich.screens.SandwichScreen;
@@ -9,6 +10,7 @@ import com.pluralsight.deli.service.sandwich.screens.SandwichScreen;
 import java.util.Scanner;
 
 public class OrderScreen {
+    static Order order = new Order();
     static Scanner scanner = new Scanner(System.in);
     static SandwichScreen sandwichScreen = new SandwichScreen();
     DrinkScreen drinkScreen = new DrinkScreen();
@@ -17,12 +19,8 @@ public class OrderScreen {
 
     public static void displayOrderScreen() {
 
-
         // home screen
         boolean isRunning = true;
-        Sandwich sandwich = null;
-        Drink drink = null;
-        Chips chips = null;
 
         while (isRunning) {
             System.out.println("""
@@ -41,19 +39,19 @@ public class OrderScreen {
             switch (userInput) {
                 case "1":
                     System.out.println("Add a sandwich ");
-                    sandwichScreen.addSandwichDisplay();
+                    sandwichScreen.addSandwichDisplay(order);
                     break;
                 case "2":
                     System.out.println("Add a drink ");
-                    DrinkScreen.drinkDisplay();
+                    DrinkScreen.drinkDisplay(order);
                     break;
                 case "3":
                     System.out.println("Add chips ");
-                    ChipsScreen.chipsDisplay();
+                    ChipsScreen.chipsDisplay(order);
                     break;
                 case "4":
                     System.out.println("Proceed to checkout ");
-                    CheckOutScreen.checkOutDisplay();
+                    CheckOutScreen.checkOutDisplay(order);
                     break;
                 case "0":
                     System.out.println("Cancel order and return to home page ");

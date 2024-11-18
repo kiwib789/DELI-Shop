@@ -1,12 +1,14 @@
 package com.pluralsight.deli.service.drink.screens;
 
+import com.pluralsight.deli.model.Order;
+
 import java.util.Scanner;
 
 public class DrinkScreen {
     static Scanner scanner = new Scanner(System.in);
     DrinkSizeScreen drinkSizeScreen = new DrinkSizeScreen();
     DrinkFlavorScreen drinkFlavorScreen = new DrinkFlavorScreen();
-    public static void drinkDisplay() {
+    public static void drinkDisplay(Order order) {
         boolean isRunning = true;
         String drinkChoice = null;
         while (isRunning) {
@@ -14,10 +16,10 @@ public class DrinkScreen {
             drinkChoice = scanner.nextLine();
             switch (drinkChoice) {
                 case "1":
-                    DrinkSizeScreen.drinkSizeDisplay();
+                    DrinkSizeScreen.drinkSizeDisplay(order);
                     break;
                 case "2":
-                    DrinkFlavorScreen.drinkFlavorDisplay();
+                    DrinkFlavorScreen.drinkFlavorDisplay(order);
                     break;
                 case "0":
                     isRunning = false;

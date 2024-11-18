@@ -2,12 +2,10 @@ package com.pluralsight.deli.service.sandwich.screens;
 
 import com.pluralsight.deli.enums.BreadType;
 import com.pluralsight.deli.enums.PremiumToppings;
-import com.pluralsight.deli.enums.RegularToppings;
 import com.pluralsight.deli.enums.SandwichSize;
+import com.pluralsight.deli.model.Order;
 import com.pluralsight.deli.service.toppings.screens.SelectToppingsScreen;
 
-import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class SandwichScreen {
@@ -18,7 +16,7 @@ public class SandwichScreen {
     ToastedScreen toastedScreen = new ToastedScreen();
     CustomizationScreen customizationScreen = new CustomizationScreen();
 
-    public void addSandwichDisplay() {
+    public void addSandwichDisplay(Order order) {
         boolean isRunning = true;
 
         BreadType breadType = null;
@@ -41,20 +39,21 @@ public class SandwichScreen {
 
             switch (userInput) {
                 case "1":
-                    breadType = selectBreadType.selectBreadType();
+
+                    breadType = selectBreadType.selectBreadType(order);
                     break;
 
                 case "2":
-                    sandwichSize = selectSandwichSize.selectSandwichSize();
+                    sandwichSize = selectSandwichSize.selectSandwichSize(order);
                     break;
 
                 case "3":
                     //  Regular + Premium
-                    premiumToppings = selectToppings.selectToppings();
-                    regularToppings = selectToppings.selectToppings();
+                    premiumToppings = selectToppings.selectToppings(order);
+                    regularToppings = selectToppings.selectToppings(order);
                     break;
                 case "4":
-                    ToastedScreen.selectToastedOption();
+                    ToastedScreen.selectToastedOption(order);
                     break;
 
                 case "0":

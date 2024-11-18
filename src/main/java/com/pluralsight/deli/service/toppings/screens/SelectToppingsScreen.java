@@ -2,6 +2,7 @@ package com.pluralsight.deli.service.toppings.screens;
 
 import com.pluralsight.deli.enums.PremiumToppings;
 import com.pluralsight.deli.enums.RegularToppings;
+import com.pluralsight.deli.model.Order;
 
 import java.util.Scanner;
 
@@ -11,7 +12,7 @@ RegularToppingsScreen regularToppingsScreen = new RegularToppingsScreen();
 AddExtraMeatScreen addExtraMeatScreen = new AddExtraMeatScreen();
 AddExtraCheeseScreen addExtraCheeseScreen = new AddExtraCheeseScreen();
 SaucesScreen saucesScreen = new SaucesScreen();
-    public static PremiumToppings selectToppings() {
+    public static PremiumToppings selectToppings(Order order) {
         boolean isRunning = true;
         PremiumToppings premiumToppings = null;
         while (isRunning) {

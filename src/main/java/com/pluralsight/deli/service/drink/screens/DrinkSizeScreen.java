@@ -1,13 +1,15 @@
 package com.pluralsight.deli.service.drink.screens;
 
+import com.pluralsight.deli.enums.SandwichSize;
 import com.pluralsight.deli.model.Drink;
+import com.pluralsight.deli.model.Order;
 
 import java.util.Scanner;
 
 public class DrinkSizeScreen {
     static Scanner scanner = new Scanner(System.in);
 
-    public static Drink.DrinkSize drinkSizeDisplay() {
+    public static Drink.DrinkSize drinkSizeDisplay(Order order) {
         boolean isRunning = true;
         Drink.DrinkSize selectDrinkSize = null;
         while (isRunning) {

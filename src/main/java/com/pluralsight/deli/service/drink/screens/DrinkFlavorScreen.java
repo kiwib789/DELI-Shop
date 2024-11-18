@@ -1,13 +1,14 @@
 package com.pluralsight.deli.service.drink.screens;
 
 import com.pluralsight.deli.model.Drink;
+import com.pluralsight.deli.model.Order;
 
 import java.util.Scanner;
 
-public class DrinkFlavorScreen {
+public class DrinkFlavorScreen{
     static Scanner scanner = new Scanner(System.in);
 
-    public static Drink.DrinkType drinkFlavorDisplay() {
+    public static Drink.DrinkType drinkFlavorDisplay(Order order) {
         boolean isRunning = true;
         Drink.DrinkType drinkType = null;
         while (isRunning) {

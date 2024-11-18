@@ -8,14 +8,16 @@ public class Drink extends Product{
     private final DrinkSize size;
 
     // constructor
-    public Drink(DrinkSize size, DrinkType type) {
-        super(size.description);
-        this.type = type;
-        this.size = size;
+    public Drink(DrinkSize drinkSize, DrinkType drinkType) {
+        super(drinkType.name());
+        this.size = drinkSize;
+        this.type = drinkType;
+
     }
 
      // getters
     public DrinkSize getSize() {
+
         return size;
     }
 

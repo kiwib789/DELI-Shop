@@ -1,11 +1,13 @@
 package com.pluralsight.deli.service.sandwich.screens;
 
+import com.pluralsight.deli.model.Order;
+
 import java.util.Scanner;
 
 public class ToastedScreen {
     static Scanner scanner = new Scanner(System.in);
 
-    public static boolean selectToastedOption() {
+    public static boolean selectToastedOption(Order order) {
         boolean isToasted = false;
         boolean isRunning = true;
         while (isRunning) {

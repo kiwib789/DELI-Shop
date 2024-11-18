@@ -47,7 +47,8 @@ public class HomeScreen {
 
                 case "0":
                     isRunning = false;
-                    break;
+                    return;
+                   // break;
 
                 default:
                     System.out.println("Invalid input, please choose correct input.");

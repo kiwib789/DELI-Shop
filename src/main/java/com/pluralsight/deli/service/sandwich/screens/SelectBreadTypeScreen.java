@@ -1,13 +1,14 @@
 package com.pluralsight.deli.service.sandwich.screens;
 
 import com.pluralsight.deli.enums.BreadType;
+import com.pluralsight.deli.model.Order;
 
 import java.util.Scanner;
 
 public class SelectBreadTypeScreen {
     static Scanner scanner = new Scanner(System.in);
 
-    public static BreadType selectBreadType() {
+    public static BreadType selectBreadType(Order order) {
         boolean isRunning = true;
         BreadType breadType = null;
         while (isRunning) {

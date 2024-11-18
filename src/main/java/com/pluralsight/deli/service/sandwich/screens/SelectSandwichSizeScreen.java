@@ -1,13 +1,14 @@
 package com.pluralsight.deli.service.sandwich.screens;
 
 import com.pluralsight.deli.enums.SandwichSize;
+import com.pluralsight.deli.model.Order;
 
 import java.util.Scanner;
 
 public class SelectSandwichSizeScreen {
     static Scanner scanner = new Scanner(System.in);
 
-    public SandwichSize selectSandwichSize() {
+    public SandwichSize selectSandwichSize(Order order) {
         boolean isRunning = true;
         SandwichSize sandwichSize = null;
         while (isRunning) {
