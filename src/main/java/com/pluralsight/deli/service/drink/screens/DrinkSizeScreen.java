@@ -1,6 +1,5 @@
 package com.pluralsight.deli.service.drink.screens;
 
-import com.pluralsight.deli.enums.SandwichSize;
 import com.pluralsight.deli.model.Drink;
 import com.pluralsight.deli.model.Order;
 
@@ -14,7 +13,7 @@ public class DrinkSizeScreen {
         Drink.DrinkSize selectDrinkSize = null;
         while (isRunning) {
             // allows user to select their choice of drink size and returns choice
-            System.out.println("Select sandwich size: \n1) Small (4 inches) \n2) Medium (8 inches) \n3) Large (12 inches) \n0) Exit");
+            System.out.println("Select drink size: \n1) Small \n2) Medium  \n3) Large  \n0) Exit");
             String sizeChoice = scanner.nextLine();
             switch (sizeChoice) {
                 case "1":

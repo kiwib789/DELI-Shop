@@ -8,7 +8,9 @@ import java.util.Scanner;
 public class SelectSandwichSizeScreen {
     static Scanner scanner = new Scanner(System.in);
 
-    public SandwichSize selectSandwichSize(Order order) {
+    public void Sandwich.
+
+    static com.pluralsight.deli.model.Sandwich.SandwichSize selectSandwichSize(Order order) {
         boolean isRunning = true;
         SandwichSize sandwichSize = null;
         while (isRunning) {

@@ -1,6 +1,7 @@
 package com.pluralsight.deli.service.toppings.screens;
 
 import com.pluralsight.deli.enums.PremiumToppings;
+import com.pluralsight.deli.model.Order;
 
 import java.util.Scanner;
 
@@ -8,7 +9,7 @@ public class AddExtraCheeseScreen {
     // scanner to read user input
     static Scanner scanner = new Scanner(System.in);
     // method to display extra cheese options
-    public static PremiumToppings addExtraCheeseDisplay() {
+    public static PremiumToppings addExtraCheeseDisplay(Order order) {
 
         boolean isRunning = true;
         PremiumToppings extraCheeseChoice = null;

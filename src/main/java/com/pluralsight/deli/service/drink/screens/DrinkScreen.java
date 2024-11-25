@@ -7,11 +7,12 @@ public class DrinkScreen{
 
     public static void drinkDisplay(Order order) {
 
-        // Ask what kind of drink
+        // Asks what kind of drink
         Drink.DrinkType drinkType = DrinkFlavorScreen.drinkFlavorDisplay(order);
-
-        // Ask for size
+        // Asks for size
         Drink.DrinkSize drinkSize = DrinkSizeScreen.drinkSizeDisplay(order);
+
+
         // Make Drink and add to Order
         Drink drink  = new Drink(drinkSize,drinkType);
         // add drink to order

@@ -1,13 +1,14 @@
 package com.pluralsight.deli.service.toppings.screens;
 
 import com.pluralsight.deli.enums.PremiumToppings;
+import com.pluralsight.deli.model.Order;
 
 import java.util.Scanner;
 
 public class MeatToppingsScreen {
     static Scanner scanner = new Scanner(System.in);
 
-    public static PremiumToppings meatToppingsDisplay() {
+    public static PremiumToppings meatToppingsDisplay(Order order) {
         boolean isRunning = true;
         PremiumToppings meatChoice = null;
         while (isRunning) {

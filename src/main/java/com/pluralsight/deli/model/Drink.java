@@ -72,13 +72,18 @@ public class Drink extends Product {
         }
     }
 
+    @Override
+    public String orderDetails() {
+        return "";
+    }
+
 
     @Override
     public String toString() {
         return "Drink{" +
-                "type=" + type.description +
-                ", size=" + size.description +
-                ", price=" + size.price +
+                "type: " + type.description +
+                ", size: " + size.description +
+                ", price: =" + size.price +
                 '}';
     }
 }

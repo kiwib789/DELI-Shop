@@ -27,3 +27,7 @@ public void receipt(Order order){
    }
 }
 }
+
+
+
+// method to save order to receipt

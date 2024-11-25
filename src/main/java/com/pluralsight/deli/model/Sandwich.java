@@ -25,11 +25,13 @@ public class Sandwich extends Product {
         this.regularToppings = new ArrayList<>();
         this.premiumToppings = new ArrayList<>();
     }
-   // getters and setters
+
+    // getters and setters
     public BreadType getBreadType() {
         return breadType;
     }
-//
+
+    //
     public void setBreadType(BreadType breadType) {
         this.breadType = breadType;
     }
@@ -62,13 +64,32 @@ public class Sandwich extends Product {
 
     // Adds regular topping to the sandwich
     public void addRegularTopping(RegularToppings toppings) {
+
         regularToppings.add(toppings);
     }
 
     // Adds premium topping to the sandwich
     public void addPremiumTopping(PremiumToppings toppings) {
+
         premiumToppings.add(toppings);
     }
+
+
+    // enums
+    public enum SandwichSize {
+        SMALL,
+        MEDIUM,
+        LARGE;
+    }
+    public enum BreadType{
+        WHITE,
+        WHEAT,
+        RYE,
+        WRAP;
+
+
+    }
+
     /// total price
     @Override
     public double getPrice() {
@@ -94,6 +115,9 @@ public class Sandwich extends Product {
             }
         }
 
+        //enums
+
+
         // Add the price for the bread type
         if (size == SandwichSize.SMALL) {
             total += 5.50;
@@ -108,6 +132,28 @@ public class Sandwich extends Product {
         return total;
     }
 
-}//
+    @Override
+    public String orderDetails() {
+
+            StringBuilder details = new StringBuilder();
+
+            details.append(name).append(" ")
+                    .append(String.format("%.2f", getPrice()))  // price to 2 decimal places
+                    .append("\nSize: ").append(size)
+                    .append("\nBread type: ").append(breadType)
+                    .append("\nToasted: ").append(isToasted ? "Yes" : "No")
+                    .append("\nRegular toppings: ").append(regularToppings)
+                    .append("\nPremium toppings: ").append(premiumToppings);
+            // TODO extra cheese/meat toppings and sauces
+
+            return details.toString();
+        }
+
+
+
+    }
+
+
+
 
 
