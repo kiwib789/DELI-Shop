@@ -72,11 +72,6 @@ public class Drink extends Product {
         }
     }
 
-    @Override
-    public String orderDetails() {
-        return "";
-    }
-
 
     @Override
     public String toString() {

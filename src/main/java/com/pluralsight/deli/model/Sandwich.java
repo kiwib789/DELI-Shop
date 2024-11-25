@@ -16,15 +16,24 @@ public class Sandwich extends Product {
     private final List<PremiumToppings> premiumToppings;
 
 
-    // constructor
-    public Sandwich(Sandwich sandwich, BreadType breadType, SandwichSize size, boolean isToasted) {
-        super(sandwich.name);
+     //constructor
+    public Sandwich(String name, BreadType breadType, SandwichSize size, boolean isToasted) {
+        super(name);
         this.breadType = breadType;
         this.size = size;
         this.isToasted = isToasted;
         this.regularToppings = new ArrayList<>();
         this.premiumToppings = new ArrayList<>();
     }
+
+//    public Sandwich(String name, List<RegularToppings> regularToppings, List<PremiumToppings> premiumToppings, boolean isToasted, SandwichSize size, BreadType breadType) {
+//        super(name);
+//        this.regularToppings = regularToppings;
+//        this.premiumToppings = premiumToppings;
+//        this.isToasted = isToasted;
+//        this.size = size;
+//        this.breadType = breadType;
+//    }
 
     // getters and setters
     public BreadType getBreadType() {
@@ -75,21 +84,6 @@ public class Sandwich extends Product {
     }
 
 
-    // enums
-    public enum SandwichSize {
-        SMALL,
-        MEDIUM,
-        LARGE;
-    }
-    public enum BreadType{
-        WHITE,
-        WHEAT,
-        RYE,
-        WRAP;
-
-
-    }
-
     /// total price
     @Override
     public double getPrice() {
@@ -115,8 +109,6 @@ public class Sandwich extends Product {
             }
         }
 
-        //enums
-
 
         // Add the price for the bread type
         if (size == SandwichSize.SMALL) {
@@ -132,7 +124,6 @@ public class Sandwich extends Product {
         return total;
     }
 
-    @Override
     public String orderDetails() {
 
             StringBuilder details = new StringBuilder();
@@ -149,9 +140,17 @@ public class Sandwich extends Product {
             return details.toString();
         }
 
-
-
+    @Override
+    public String toString() {
+        return "Sandwich{" +
+                "premiumToppings=" + premiumToppings +
+                ", breadType=" + breadType +
+                ", size=" + size +
+                ", isToasted=" + isToasted +
+                ", regularToppings=" + regularToppings +
+                '}';
     }
+}
 
 
 

@@ -1,16 +1,14 @@
 package com.pluralsight.deli.model;
 
 import com.pluralsight.deli.receipt.ReceiptManager;
-import com.pluralsight.deli.service.ChipsScreen;
-import com.pluralsight.deli.service.HomeScreen;
-import com.pluralsight.deli.service.OrderScreen;
+import com.pluralsight.deli.view.UserInterface;
 
 public class Program {
     public static void main(String[] args) {
-
+        UserInterface ui = new UserInterface();
 
      //   Order o = new Order();
-        HomeScreen.displayHomeScreen();
+        ui.displayHomeScreen();
 
 
 
