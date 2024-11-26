@@ -1,18 +1,18 @@
 package com.pluralsight.deli.model;
 
-import jdk.internal.icu.text.UnicodeSet;
+import com.pluralsight.deli.enums.DrinkSize;
+
 
 public class Drink extends Product {
 
-    private final DrinkType type;
     private final DrinkSize size;
 
     // constructor
-    public Drink(DrinkSize drinkSize, DrinkType drinkType) {
-        super(drinkType.name());
-        this.size = drinkSize;
-        this.type = drinkType;
 
+
+    public Drink(String name, DrinkSize size) {
+        super(name);
+        this.size = size;
     }
 
     // getters
@@ -22,63 +22,18 @@ public class Drink extends Product {
     }
 
 
-    public DrinkType getType() {
 
-        return type;
+
+    @Override
+    public double getPrice(){
+        return 0.0;
     }
-
-    public enum DrinkSize {
-        SMALL("Small", 2.00),
-        MEDIUM("Medium", 2.50),
-        LARGE("Large", 3.00);
-
-        private final String description;
-        private final double price;
-
-        DrinkSize(String description, double price) {
-            this.description = description;
-            this.price = price;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public double getPrice() {
-            return price;
-        }
-    }
-
-    public enum DrinkType {
-        // tea soda water
-
-        TEA("Sweet Tea"),
-        COLA("Coca-cola");
-
-        private final String description;
-
-        DrinkType(String description) {
-            this.description = description;
-        }
-    }
-
-    public double getPrice() {
-        if (size == DrinkSize.SMALL) {
-            return DrinkSize.SMALL.price;
-        } else if (size == DrinkSize.MEDIUM) {
-            return DrinkSize.MEDIUM.price;
-        } else {
-            return DrinkSize.LARGE.price;
-        }
-    }
-
 
     @Override
     public String toString() {
         return "Drink{" +
-                "type: " + type.description +
-                ", size: " + size.description +
-                ", price: =" + size.price +
+                "name='" + name + '\'' +
+                ", size=" + size +
                 '}';
     }
 }

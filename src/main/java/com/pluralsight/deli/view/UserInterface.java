@@ -5,6 +5,8 @@ import com.pluralsight.deli.model.Chips;
 import com.pluralsight.deli.model.Drink;
 import com.pluralsight.deli.model.Order;
 import com.pluralsight.deli.model.Sandwich;
+import com.pluralsight.deli.service.OrderService;
+import com.pluralsight.deli.service.OrderServiceImpl;
 import com.pluralsight.deli.service.SandwichService;
 import com.pluralsight.deli.service.SandwichServiceImpl;
 
@@ -15,6 +17,7 @@ import java.util.Scanner;
 public class UserInterface {
     Scanner scanner = new Scanner(System.in);
     private final SandwichService sandwichService;
+    private final OrderService orderService;
     private Order order;
     private List<Sandwich> sandwiches = new ArrayList<>();
     private List<Drink> drinks = new ArrayList<>();
@@ -22,6 +25,7 @@ public class UserInterface {
 
     public UserInterface() {
         this.sandwichService = new SandwichServiceImpl();
+        this.orderService = new OrderServiceImpl();
     }
 
     // home screen
@@ -47,6 +51,7 @@ public class UserInterface {
             // Works with user input based on which answer they pick and takes them to the next screen
             switch (userInput) {
                 case "1":
+
                     displayOrderScreen();
                     break;
 
@@ -63,7 +68,9 @@ public class UserInterface {
 
     // order screen
     public void displayOrderScreen() {
-
+        System.out.print("Enter your name: ");
+        String customerName = scanner.nextLine();
+        Order order = orderService.createNewOrder(customerName);
 
         // home screen
         boolean isRunning = true;
@@ -78,19 +85,21 @@ public class UserInterface {
             switch (userInput) {
                 case "1":
                     System.out.println("Add a sandwich ");
-                    addSandwichDisplay();
+                    addSandwichDisplay(order);
                     break;
                 case "2":
                     System.out.println("Add a drink ");
-                    drinkDisplay();
+                    selectDrink(order);
                     break;
                 case "3":
                     System.out.println("Add chips ");
-                    chipsDisplay();
+                   // chipsDisplay(order);
                     break;
                 case "4":
                     System.out.println("Proceed to checkout ");
-                    checkOutDisplay();
+                    orderService.checkOut(order);
+                    //checkOutDisplay(order);
+                    isRunning = false;
                     break;
                 case "0":
                     System.out.println("Cancel order and return to home page ");
@@ -104,7 +113,7 @@ public class UserInterface {
     }
 
     // display sandwich custom options
-    public void addSandwichDisplay() {
+    public void addSandwichDisplay(Order order) {
 
         boolean isSignature = selectSignatureOption();
         BreadType breadType = selectBreadType();
@@ -113,6 +122,7 @@ public class UserInterface {
         Sandwich sandwich = sandwichService.createSandwich("Custom Sandwich", breadType, sandwichSize, isToasted);
         selectPremiumToppings(sandwich);
         selectRegularToppings(sandwich);
+        orderService.addProductToOrder(order,sandwich);
 
     }
 
@@ -124,25 +134,26 @@ public class UserInterface {
             // if the topping choice == 0 isrunning is false
             if (toppingChoice.equals("0")) {
                 isRunning = false;
-            }
-            RegularToppings topping = switch (toppingChoice) {
-                case "1" -> RegularToppings.LETTUCE;
-                case "2" -> RegularToppings.PEPPERS;
-                case "3" -> RegularToppings.ONIONS;
-                case "4" -> RegularToppings.TOMATOES;
-                case "5" -> RegularToppings.JALAPENOS;
-                case "6" -> RegularToppings.CUCUMBERS;
-                case "7" -> RegularToppings.PICKLES;
-                case "8" -> RegularToppings.GUACAMOLE;
-                case "9" -> RegularToppings.MUSHROOMS;
+            } else {
+                RegularToppings topping = switch (toppingChoice) {
+                    case "1" -> RegularToppings.LETTUCE;
+                    case "2" -> RegularToppings.PEPPERS;
+                    case "3" -> RegularToppings.ONIONS;
+                    case "4" -> RegularToppings.TOMATOES;
+                    case "5" -> RegularToppings.JALAPENOS;
+                    case "6" -> RegularToppings.CUCUMBERS;
+                    case "7" -> RegularToppings.PICKLES;
+                    case "8" -> RegularToppings.GUACAMOLE;
+                    case "9" -> RegularToppings.MUSHROOMS;
 
-                default -> {
-                    System.out.println("Invalid input, try again");
-                    yield null;
+                    default -> {
+                        System.out.println("Invalid input, try again");
+                        yield null;
+                    }
+                };
+                if (topping != null) {
+                    sandwich.addRegularTopping(topping);
                 }
-            };
-            if (topping != null) {
-                sandwich.addRegularTopping(topping);
             }
         }
     }
@@ -155,31 +166,32 @@ public class UserInterface {
             // if the topping choice == 0 isrunning is false
             if (toppingChoice.equals("0")) {
                 isRunning = false;
-            }
-            PremiumToppings topping = switch (toppingChoice) {
-                case "1" -> PremiumToppings.STEAK;
-                case "2" -> PremiumToppings.HAM;
-                case "3" -> PremiumToppings.SALAMI;
-                case "4" -> PremiumToppings.ROAST_BEEF;
-                case "5" -> PremiumToppings.CHICKEN;
-                case "6" -> PremiumToppings.BACON;
-                case "7" -> PremiumToppings.AMERICAN_CHEESE;
-                case "8" -> PremiumToppings.SWISS_CHEESE;
-                case "9" -> PremiumToppings.PROVOLONE_CHEESE;
-                case "10" -> PremiumToppings.CHEDDAR_CHEESE;
+            } else {
+                PremiumToppings topping = switch (toppingChoice) {
+                    case "1" -> PremiumToppings.STEAK;
+                    case "2" -> PremiumToppings.HAM;
+                    case "3" -> PremiumToppings.SALAMI;
+                    case "4" -> PremiumToppings.ROAST_BEEF;
+                    case "5" -> PremiumToppings.CHICKEN;
+                    case "6" -> PremiumToppings.BACON;
+                    case "7" -> PremiumToppings.AMERICAN_CHEESE;
+                    case "8" -> PremiumToppings.SWISS_CHEESE;
+                    case "9" -> PremiumToppings.PROVOLONE_CHEESE;
+                    case "10" -> PremiumToppings.CHEDDAR_CHEESE;
 
-                default -> {
-                    System.out.println("Invalid input, try again");
-                    yield null;
+                    default -> {
+                        System.out.println("Invalid input, try again");
+                        yield null;
+                    }
+                };
+                if (topping != null) {
+                    sandwich.addPremiumTopping(topping);
                 }
-            };
-            if (topping != null) {
-                sandwich.addPremiumTopping(topping);
             }
-
         }
 
     }
+
     // user selects the size of bread
     private BreadType selectBreadType() {
         boolean isRunning = true;
@@ -242,40 +254,76 @@ public class UserInterface {
     }
 
 
-    private void addSaucesDisplay() {
-
-    }
 
 
-    public void addExtraCheeseDisplay() {
-        boolean isRunning = true;
-
-        while (isRunning) {
-
-        }
-        // american provolone cheddar swiss
-
-    }
-
-
-    public void addExtraMeatDisplay() {
+    public void addExtraCheeseDisplay(Sandwich sandwich) {
         boolean isRunning = true;
         while (isRunning) {
+            System.out.println(Prompts.extraCheesePrompt);
+            String toppingChoice = scanner.nextLine();
+            if (toppingChoice.equals("0")){
+                isRunning = false;
+            }
+            PremiumToppings topping = switch (toppingChoice){
+                case "1" -> PremiumToppings.AMERICAN_CHEESE;
+                case "2" -> PremiumToppings.SWISS_CHEESE;
+                case "3" -> PremiumToppings.PROVOLONE_CHEESE;
+                case "4" -> PremiumToppings.CHEDDAR_CHEESE;
+
+                default -> {
+                    System.out.println("Invalid input, try again");
+                    yield null;
+                }
+            };
+            if (topping != null) {
+                sandwich.addPremiumTopping(topping);
 
         }
-        return;
+
+    }
+        }
+
+
+    public void addExtraMeatDisplay(Sandwich sandwich) {
+        boolean isRunning = true;
+        while (isRunning) {
+            System.out.println(Prompts.extraMeatPrompt);
+            String toppingChoice = scanner.nextLine();
+            if (toppingChoice.equals("0")) {
+                isRunning = false;
+            }
+            PremiumToppings topping = switch (toppingChoice) {
+                case "1" -> PremiumToppings.STEAK;
+                case "2" -> PremiumToppings.HAM;
+                case "3" -> PremiumToppings.SALAMI;
+                case "4" -> PremiumToppings.ROAST_BEEF;
+                case "5" -> PremiumToppings.CHICKEN;
+                case "6" -> PremiumToppings.BACON;
+
+                default -> {
+                    System.out.println("Invalid input, try again");
+                    yield null;
+                }
+            };
+            if (topping != null) {
+                sandwich.addPremiumTopping(topping);
+
+            }
+
+        }
     }
 
-    private boolean selectSignatureOption() {
-        return false;
-    }
+        private boolean selectSignatureOption () {
+            return false;
+        }
+
 
     // user chooses if they want the bread toasted
     private boolean selectToastedOption() {
         boolean isToasted = false;
         boolean isRunning = true;
         while (isRunning) {
-            System.out.println("Do you want your sandwich toasted?\n1:Yes\n2:No\n");
+            System.out.println(Prompts.isToastedPrompt);
             String toastChoice = scanner.nextLine();
             if (toastChoice.equals("1")) {
                 isToasted = true;
@@ -292,74 +340,55 @@ public class UserInterface {
         return isToasted;
     }
 
-    public void drinkDisplay() {
+    public void selectDrink(Order order) {
         boolean isRunning = true;
-        String drinkChoice = null;
         while (isRunning) {
-            System.out.println("Please choose drink size and flavor \n 1) Drink size \n 2) Drink flavor\n 0) Exit");
-            drinkChoice = scanner.nextLine();
-            switch (drinkChoice) {
-                case "1":
-                    drinkSizeDisplay();
-                    break;
-                case "2":
-                    drinkFlavorDisplay();
-                    break;
-                case "0":
-                    isRunning = false;
-                default:
-                    System.out.println("Invalid choice. Please choose 1,2, or 0.");
-                    return;
+            System.out.println(Prompts.drinksSizePrompt);
+            String drinkSizeChoice = scanner.nextLine();
+            // if the topping choice == 0 isrunning is false
+            if (drinkSizeChoice.equals("0")) {
+                isRunning = false;
             }
+            DrinkSize drinkSize = switch (drinkSizeChoice) {
+                case "1" -> DrinkSize.SMALL;
+                case "2" -> DrinkSize.MEDIUM;
+                case "3" -> DrinkSize.LARGE;
+
+                default -> {
+                    System.out.println("Invalid input, try again");
+                    yield null;
+                }
+
+            };
+            orderService.addProductToOrder(order, new Drink("Drink", drinkSize));
         }
     }
 
-    private void drinkSizeDisplay() {
+    public void chipsDisplay(Order order) {
         boolean isRunning = true;
         while (isRunning) {
-
-        }
-    }
-
-    private void drinkFlavorDisplay() {
-    }
-
-    public ChipType chipsDisplay() {
-        boolean isRunning = true;
-        ChipType chipType = null;
-        while (isRunning) {
-            System.out.println("""
-                    Please select the chips you would like.
-                    1) Potato chips
-                    2) BBQ chips
-                    3) Sour cream and onion chips
-                    4) Salt and vinegar chips
-                    0) Exit
-                    
-                    """);
+            System.out.println(Prompts.chipsPrompt);
             String chipChoice = scanner.nextLine();
-            switch (chipChoice) {
-                case "1":
-                    chipType = ChipType.POTATO_CHIPS;
-                    break;
-                case "2":
-                    chipType = ChipType.BBQ;
-                    break;
-                case "3":
-                    chipType = ChipType.SOUR_CREAM;
-                    break;
-                case "4":
-                    chipType = ChipType.SALT_AND_VINEGAR;
-                    break;
-                case "0":
-                    isRunning = false;
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please choose 1,2,3,4,0");
-                    continue;
+            // if the topping choice == 0 isrunning is false
+            if (chipChoice.equals("0")) {
+                isRunning = false;
+            }
+            ChipType chips = switch (chipChoice) {
+                case "1" -> ChipType.POTATO_CHIPS;
+                case "2" -> ChipType.BBQ;
+                case "3" -> ChipType.SOUR_CREAM;
+                case "4" -> ChipType.SALT_AND_VINEGAR;
+
+                default -> {
+                    System.out.println("Invalid input, try again");
+                    yield null;
+                }
+            };
+            if (chips != null) {
+                orderService.addProductToOrder(order, new Chips(chips));
             }
         }
-        return chipType;
+
     }
 
     public void checkOutDisplay() {
@@ -369,14 +398,35 @@ public class UserInterface {
 
         }
     }
+    private void selectSauces(Sandwich sandwich) {
+        boolean isRunning = true;
+        while (isRunning) {
+            System.out.println(Prompts.saucesPrompt);
+            String saucesChoice = scanner.nextLine();
+            // if the topping choice == 0 isrunning is false
+            if (saucesChoice.equals("0")) {
+                isRunning = false;
+            }
+            Sauces sauces = switch (saucesChoice) {
+                case "1" -> Sauces.MAYO;
+                case "2" -> Sauces.MUSTARD;
+                case "3" -> Sauces.KETCHUP;
+                case "4" -> Sauces.RANCH;
+                case "5" -> Sauces.THOUSAND_ISLAND;
+                case "6" -> Sauces.VINAIGRETTE;
 
 
-    public List<Sandwich> getSandwiches() {
-        return sandwiches;
-    }
+                default -> {
+                    System.out.println("Invalid input, try again");
+                    yield null;
+                }
+            };
+            if (sauces != null) {
+                sandwich.addSauce(sauces);
+            }
 
-    public void setSandwiches(List<Sandwich> sandwiches) {
-        this.sandwiches = sandwiches;
+        }
+
     }
 
     public Order getOrder() {
@@ -387,21 +437,6 @@ public class UserInterface {
         this.order = order;
     }
 
-    public List<Drink> getDrinks() {
-        return drinks;
-    }
-
-    public void setDrinks(List<Drink> drinks) {
-        this.drinks = drinks;
-    }
-
-    public List<Chips> getChips() {
-        return chips;
-    }
-
-    public void setChips(List<Chips> chips) {
-        this.chips = chips;
-    }
 }
 
 

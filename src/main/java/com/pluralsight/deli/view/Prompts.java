@@ -43,5 +43,66 @@ public class Prompts {
             10) Cheddar cheese
             
             Choose your option: """;
+
+    static String chipsPrompt = """
+                    Please select the chips you would like.
+                    1) Potato chips
+                    2) BBQ chips
+                    3) Sour cream and onion chips
+                    4) Salt and vinegar chips
+                    0) Exit
+                    
+                    """;
+
+    static String drinksSizePrompt = """
+            Please choose drink size
+            1) Small
+            2) Medium
+            3) Large
+            4) Exit
+            """;
+
+    static String drinkTypePrompt = """
+            Please choose drink flavor
+            1) Cola
+            2) Tea
+            0) Exit
+            """;
+
+    static  String saucesPrompt = """
+            Please choose sauces you would like
+            1) Mayonnaise
+            2) Mustard
+            3) Ketchup
+            4) Ranch 
+            5) Thousand Island
+            6) Vinaigrette
+            0) Exit
+            """;
+    static String extraCheesePrompt = """
+            Would you like extra cheese on your sandwich?
+            1) American cheese
+            2) Swiss cheese
+            3) Provolone cheese
+            4) Cheddar cheese
+            0) No
+            """;
+    static String extraMeatPrompt = """
+            Would you like extra meat on your sandwich?
+            1) Steak
+            2) Ham
+            3) Salami
+            4) Roast beef
+            5) Chicken
+            6) Bacon
+            0) No
+            """;
+
+    static String isToastedPrompt = """
+            Do you want your sandwich toasted?
+            1) Yes
+            2) No 
+            0) Exit
+            """;
 }
 

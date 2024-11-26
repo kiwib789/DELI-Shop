@@ -1,9 +1,6 @@
 package com.pluralsight.deli.model;
 
-import com.pluralsight.deli.enums.BreadType;
-import com.pluralsight.deli.enums.PremiumToppings;
-import com.pluralsight.deli.enums.RegularToppings;
-import com.pluralsight.deli.enums.SandwichSize;
+import com.pluralsight.deli.enums.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,11 +9,14 @@ public class Sandwich extends Product {
     private BreadType breadType;
     private SandwichSize size;
     private boolean isToasted;
+    private boolean extraMeat;
+    private boolean extraCheese;
     private final List<RegularToppings> regularToppings;
     private final List<PremiumToppings> premiumToppings;
+    private final List<Sauces> sauces;
 
 
-     //constructor
+         //constructor
     public Sandwich(String name, BreadType breadType, SandwichSize size, boolean isToasted) {
         super(name);
         this.breadType = breadType;
@@ -24,16 +24,18 @@ public class Sandwich extends Product {
         this.isToasted = isToasted;
         this.regularToppings = new ArrayList<>();
         this.premiumToppings = new ArrayList<>();
+        this.sauces = new ArrayList<>();
     }
 
-//    public Sandwich(String name, List<RegularToppings> regularToppings, List<PremiumToppings> premiumToppings, boolean isToasted, SandwichSize size, BreadType breadType) {
-//        super(name);
-//        this.regularToppings = regularToppings;
-//        this.premiumToppings = premiumToppings;
-//        this.isToasted = isToasted;
-//        this.size = size;
-//        this.breadType = breadType;
-//    }
+    public Sandwich(String name, List<RegularToppings> regularToppings,List<Sauces> sauces, List<PremiumToppings> premiumToppings, boolean isToasted, SandwichSize size, BreadType breadType) {
+        super(name);
+        this.regularToppings = regularToppings;
+        this.premiumToppings = premiumToppings;
+        this.isToasted = isToasted;
+        this.size = size;
+        this.breadType = breadType;
+        this.sauces = sauces;
+    }
 
     // getters and setters
     public BreadType getBreadType() {
@@ -82,8 +84,9 @@ public class Sandwich extends Product {
 
         premiumToppings.add(toppings);
     }
-
-
+    public void addSauce(Sauces sauce) {
+        sauces.add(sauce);
+    }
     /// total price
     @Override
     public double getPrice() {
@@ -143,11 +146,11 @@ public class Sandwich extends Product {
     @Override
     public String toString() {
         return "Sandwich{" +
-                "premiumToppings=" + premiumToppings +
-                ", breadType=" + breadType +
-                ", size=" + size +
-                ", isToasted=" + isToasted +
-                ", regularToppings=" + regularToppings +
+                "premiumToppings: " + premiumToppings +
+                ", breadType: " + breadType +
+                ", size: " + size +
+                ", isToasted: " + isToasted +
+                ", regularToppings: " + regularToppings +
                 '}';
     }
 }

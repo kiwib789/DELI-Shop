@@ -12,6 +12,8 @@ public class Chips extends Product {
         this.chipType = chipType;
     }
 
+
+
     // Price of chips
     @Override
     public double getPrice() {
@@ -21,8 +23,8 @@ public class Chips extends Product {
     @Override
     public String toString() {
         return "Chips{" +
-                "chipType=" + chipType +
-                ", name='" + name + '\'' +
+                "chipType: " + chipType +
+                ", name: '" + name + '\'' +
                 '}';
     }
 }
