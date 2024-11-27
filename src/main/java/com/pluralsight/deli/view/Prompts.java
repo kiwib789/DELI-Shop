@@ -26,6 +26,7 @@ public class Prompts {
             7) Pickles
             8) Guacamole
             9) Mushrooms
+            0) Exit
             
             Choose your option: """;
 
@@ -41,6 +42,7 @@ public class Prompts {
             8) Swiss cheese
             9) Provolone cheese
             10) Cheddar cheese
+            0) Exit
             
             Choose your option: """;
 
@@ -59,7 +61,7 @@ public class Prompts {
             1) Small
             2) Medium
             3) Large
-            4) Exit
+            0) Exit
             """;
 
     static String drinkTypePrompt = """

@@ -21,7 +21,7 @@ public class Order {
     }
 
     // get total price
-    public double getPrice() {
+    public double totalPrice() {
         double total = 0;
         for (Product product : productsList) {
             total += product.getPrice();
@@ -41,5 +41,7 @@ public class Order {
     public String getCustomerName() {
         return customerName;
     }
+
+
 }
 

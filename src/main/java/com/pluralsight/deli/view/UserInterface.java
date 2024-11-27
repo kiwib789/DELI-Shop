@@ -93,7 +93,7 @@ public class UserInterface {
                     break;
                 case "3":
                     System.out.println("Add chips ");
-                   // chipsDisplay(order);
+                   chipsDisplay(order);
                     break;
                 case "4":
                     System.out.println("Proceed to checkout ");
@@ -122,6 +122,8 @@ public class UserInterface {
         Sandwich sandwich = sandwichService.createSandwich("Custom Sandwich", breadType, sandwichSize, isToasted);
         selectPremiumToppings(sandwich);
         selectRegularToppings(sandwich);
+        addExtraCheeseDisplay(sandwich);
+        addExtraMeatDisplay(sandwich);
         orderService.addProductToOrder(order,sandwich);
 
     }
@@ -153,6 +155,7 @@ public class UserInterface {
                 };
                 if (topping != null) {
                     sandwich.addRegularTopping(topping);
+                    System.out.println("You selected: " + topping + " premium toppings.");
                 }
             }
         }
@@ -186,6 +189,7 @@ public class UserInterface {
                 };
                 if (topping != null) {
                     sandwich.addPremiumTopping(topping);
+                    System.out.println("You selected: " + topping + " premium toppings.");
                 }
             }
         }
@@ -264,21 +268,24 @@ public class UserInterface {
             if (toppingChoice.equals("0")){
                 isRunning = false;
             }
-            PremiumToppings topping = switch (toppingChoice){
-                case "1" -> PremiumToppings.AMERICAN_CHEESE;
-                case "2" -> PremiumToppings.SWISS_CHEESE;
-                case "3" -> PremiumToppings.PROVOLONE_CHEESE;
-                case "4" -> PremiumToppings.CHEDDAR_CHEESE;
+            else {
+                PremiumToppings topping = switch (toppingChoice) {
+                    case "1" -> PremiumToppings.AMERICAN_CHEESE;
+                    case "2" -> PremiumToppings.SWISS_CHEESE;
+                    case "3" -> PremiumToppings.PROVOLONE_CHEESE;
+                    case "4" -> PremiumToppings.CHEDDAR_CHEESE;
 
-                default -> {
-                    System.out.println("Invalid input, try again");
-                    yield null;
+                    default -> {
+                        System.out.println("Invalid input, try again");
+                        yield null;
+                    }
+                };
+                if (topping != null) {
+                    sandwich.addPremiumTopping(topping);
+                    System.out.println("You selected: " + topping + "  extra premium toppings.");
+
                 }
-            };
-            if (topping != null) {
-                sandwich.addPremiumTopping(topping);
-
-        }
+            }
 
     }
         }
@@ -292,22 +299,25 @@ public class UserInterface {
             if (toppingChoice.equals("0")) {
                 isRunning = false;
             }
-            PremiumToppings topping = switch (toppingChoice) {
-                case "1" -> PremiumToppings.STEAK;
-                case "2" -> PremiumToppings.HAM;
-                case "3" -> PremiumToppings.SALAMI;
-                case "4" -> PremiumToppings.ROAST_BEEF;
-                case "5" -> PremiumToppings.CHICKEN;
-                case "6" -> PremiumToppings.BACON;
+            else {
+                PremiumToppings topping = switch (toppingChoice) {
+                    case "1" -> PremiumToppings.STEAK;
+                    case "2" -> PremiumToppings.HAM;
+                    case "3" -> PremiumToppings.SALAMI;
+                    case "4" -> PremiumToppings.ROAST_BEEF;
+                    case "5" -> PremiumToppings.CHICKEN;
+                    case "6" -> PremiumToppings.BACON;
 
-                default -> {
-                    System.out.println("Invalid input, try again");
-                    yield null;
+                    default -> {
+                        System.out.println("Invalid input, try again");
+                        yield null;
+                    }
+                };
+                if (topping != null) {
+                    sandwich.addPremiumTopping(topping);
+                    System.out.println("You selected: " + topping + "  extra premium toppings.");
+
                 }
-            };
-            if (topping != null) {
-                sandwich.addPremiumTopping(topping);
-
             }
 
         }
@@ -322,9 +332,10 @@ public class UserInterface {
     private boolean selectToastedOption() {
         boolean isToasted = false;
         boolean isRunning = true;
+        String toastChoice;
         while (isRunning) {
             System.out.println(Prompts.isToastedPrompt);
-            String toastChoice = scanner.nextLine();
+            toastChoice = scanner.nextLine();
             if (toastChoice.equals("1")) {
                 isToasted = true;
                 System.out.println("Sandwich will be toasted.");
@@ -348,19 +359,23 @@ public class UserInterface {
             // if the topping choice == 0 isrunning is false
             if (drinkSizeChoice.equals("0")) {
                 isRunning = false;
-            }
-            DrinkSize drinkSize = switch (drinkSizeChoice) {
-                case "1" -> DrinkSize.SMALL;
-                case "2" -> DrinkSize.MEDIUM;
-                case "3" -> DrinkSize.LARGE;
+            } else {
+                DrinkSize drinkSize = switch (drinkSizeChoice) {
+                    case "1" -> DrinkSize.SMALL;
+                    case "2" -> DrinkSize.MEDIUM;
+                    case "3" -> DrinkSize.LARGE;
 
-                default -> {
-                    System.out.println("Invalid input, try again");
-                    yield null;
+                    default -> {
+                        System.out.println("Invalid input, try again");
+                        yield null;
+                    }
+
+                };
+                if (drinkSize != null) {
+                    orderService.addProductToOrder(order, new Drink("Drink", drinkSize));
+                    System.out.println("You selected: " + drinkSize + " drink.");
                 }
-
-            };
-            orderService.addProductToOrder(order, new Drink("Drink", drinkSize));
+            }
         }
     }
 
@@ -372,32 +387,27 @@ public class UserInterface {
             // if the topping choice == 0 isrunning is false
             if (chipChoice.equals("0")) {
                 isRunning = false;
-            }
-            ChipType chips = switch (chipChoice) {
-                case "1" -> ChipType.POTATO_CHIPS;
-                case "2" -> ChipType.BBQ;
-                case "3" -> ChipType.SOUR_CREAM;
-                case "4" -> ChipType.SALT_AND_VINEGAR;
+            } else {
+                ChipType chips = switch (chipChoice) {
+                    case "1" -> ChipType.POTATO_CHIPS;
+                    case "2" -> ChipType.BBQ;
+                    case "3" -> ChipType.SOUR_CREAM;
+                    case "4" -> ChipType.SALT_AND_VINEGAR;
 
-                default -> {
-                    System.out.println("Invalid input, try again");
-                    yield null;
+                    default -> {
+                        System.out.println("Invalid input, try again");
+                        yield null;
+                    }
+                };
+                if (chips != null) {
+                    orderService.addProductToOrder(order, new Chips(chips));
+                    System.out.println("You selected: " + chips + " chips.");
                 }
-            };
-            if (chips != null) {
-                orderService.addProductToOrder(order, new Chips(chips));
             }
         }
 
     }
 
-    public void checkOutDisplay() {
-        boolean isRunning = true;
-        while (isRunning) {
-            // get users name
-
-        }
-    }
     private void selectSauces(Sandwich sandwich) {
         boolean isRunning = true;
         while (isRunning) {
@@ -406,25 +416,27 @@ public class UserInterface {
             // if the topping choice == 0 isrunning is false
             if (saucesChoice.equals("0")) {
                 isRunning = false;
-            }
-            Sauces sauces = switch (saucesChoice) {
-                case "1" -> Sauces.MAYO;
-                case "2" -> Sauces.MUSTARD;
-                case "3" -> Sauces.KETCHUP;
-                case "4" -> Sauces.RANCH;
-                case "5" -> Sauces.THOUSAND_ISLAND;
-                case "6" -> Sauces.VINAIGRETTE;
+            } else {
+                Sauces sauces = switch (saucesChoice) {
+                    case "1" -> Sauces.MAYO;
+                    case "2" -> Sauces.MUSTARD;
+                    case "3" -> Sauces.KETCHUP;
+                    case "4" -> Sauces.RANCH;
+                    case "5" -> Sauces.THOUSAND_ISLAND;
+                    case "6" -> Sauces.VINAIGRETTE;
 
 
-                default -> {
-                    System.out.println("Invalid input, try again");
-                    yield null;
+                    default -> {
+                        System.out.println("Invalid input, try again");
+                        yield null;
+                    }
+                };
+                if (sauces != null) {
+                    sandwich.addSauce(sauces);
+                    System.out.println("You selected: " + sauces + " sauces.");
                 }
-            };
-            if (sauces != null) {
-                sandwich.addSauce(sauces);
-            }
 
+            }
         }
 
     }

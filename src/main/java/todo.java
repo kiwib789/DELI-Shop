@@ -2,12 +2,12 @@ public class todo {
 
 
     ///todo Add chips
-    // Fix Drink Prompt
-    //Handle null inputs for product related switch cases(Drink)
-    //add else statement to Drink
+    // Fix Drink Prompt  DONE
+    //Handle null inputs for product related switch cases(Drink)  DONE
+    //add else statement to Drink DONE
 
 
-    //Create price class/method
+    //Create price class/method  DONE orderserviceimpl
 
 
     // generate receipt

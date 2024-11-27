@@ -13,18 +13,22 @@ import java.util.List;
 public class ReceiptManager {
 
 
+
+
 public void receipt(Order order){
    LocalDateTime timeOfOrder = LocalDateTime.now();
-   DateTimeFormatter dTF = DateTimeFormatter.ofPattern("yyyyMMdd");
+   DateTimeFormatter dTF = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+   String orderNumber = timeOfOrder.format(dTF);
+   String receiptFilePath = "src/main/resources/Receipts/" + orderNumber;
    StringBuilder stringBuilder = new StringBuilder();
    for (Product item : order.getProductsList()){
        stringBuilder.append(item.getName());
    }
    String formattedOrder = stringBuilder.toString();
    try {
-       FileWriter fileWriter = new FileWriter("./src/main/resources/Receipts/" + timeOfOrder.format(dTF));
+       FileWriter fileWriter = new FileWriter(receiptFilePath);
        BufferedWriter bufWriter = new BufferedWriter(fileWriter);
-       bufWriter.write(order.getId() + "\n" + order.getCustomerName() + "\n" + formattedOrder);
+       bufWriter.write("----- Receipt -----"+ "\nOrder ID: " + order.getId() + "\n" + "Customer name: " + order.getCustomerName() + "\n" + "Order details: "+ "\nTotal price: $"+ order.totalPrice() + "\n------------"+ "\nThanks for shopping with us!"+ formattedOrder);
        bufWriter.flush();
        bufWriter.close();
 

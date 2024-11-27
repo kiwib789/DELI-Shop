@@ -126,8 +126,7 @@ public class Sandwich extends Product {
 
         return total;
     }
-
-    public String orderDetails() {
+public String orderDetails() {
 
             StringBuilder details = new StringBuilder();
 
@@ -137,8 +136,9 @@ public class Sandwich extends Product {
                     .append("\nBread type: ").append(breadType)
                     .append("\nToasted: ").append(isToasted ? "Yes" : "No")
                     .append("\nRegular toppings: ").append(regularToppings)
-                    .append("\nPremium toppings: ").append(premiumToppings);
-            // TODO extra cheese/meat toppings and sauces
+                    .append("\nPremium toppings: ").append(premiumToppings)
+                    .append("\nExtra meat toppings: ").append(premiumToppings)
+                    .append("\nExtra cheese toppings: ").append(premiumToppings);
 
             return details.toString();
         }
