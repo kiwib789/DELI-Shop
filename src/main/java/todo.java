@@ -1,17 +1,10 @@
 public class todo {
 
-
-    ///todo Add chips
-    // Fix Drink Prompt  DONE
-    //Handle null inputs for product related switch cases(Drink)  DONE
-    //add else statement to Drink DONE
-
-
-    //Create price class/method  DONE orderserviceimpl
-
-
-    // generate receipt
-    // iterate order for receipt information
-    // Format order
-    //
+// TODO fix extra cheese, drink, chips method and prompt (is running = false after selection) ~~~~~~DONE
+    // TODO extra meat and cheese in price ~~~~~~~DONE
+    // TODO reformat regular toppings same way as premium toppings
+    // TODO create product details for chip and drink classes (refer to sandwich)  ~~~~~~~~~DONE
+    // TODO fix readmefile
+    // TODO reformat product details
+    // TODO test error handling
 }

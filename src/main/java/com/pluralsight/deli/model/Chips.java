@@ -21,6 +21,15 @@ public class Chips extends Product {
     }
 
     @Override
+    public String productDetail() {
+        StringBuilder details = new StringBuilder();
+
+        details.append("\nChips: ").append(chipType);
+        details.append("\nPrice: $").append(String.format("%.2f", getPrice()));
+        return details.toString();
+    }
+
+    @Override
     public String toString() {
         return "Chips{" +
                 "chipType: " + chipType +

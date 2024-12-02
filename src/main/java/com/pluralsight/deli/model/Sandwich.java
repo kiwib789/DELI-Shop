@@ -8,6 +8,15 @@ import java.util.List;
 public class Sandwich extends Product {
     private BreadType breadType;
     private SandwichSize size;
+
+    public void setExtraMeat(boolean extraMeat) {
+        this.extraMeat = extraMeat;
+    }
+
+    public void setExtraCheese(boolean extraCheese) {
+        this.extraCheese = extraCheese;
+    }
+
     private boolean isToasted;
     private boolean extraMeat;
     private boolean extraCheese;
@@ -91,8 +100,8 @@ public class Sandwich extends Product {
     @Override
     public double getPrice() {
         double total = 0.0;
-        for (PremiumToppings topping : premiumToppings) {
-            if (topping.getType() == PremiumToppings.Type.MEAT) {
+        for (PremiumToppings topping : premiumToppings) { //iterating through premium toppings
+            if (topping.getType() == PremiumToppings.Type.MEAT) { //conditional one if the topping is meat
                 if (size == SandwichSize.SMALL) {
                     total += 1.00;
                 } else if (size == SandwichSize.MEDIUM) {
@@ -100,7 +109,6 @@ public class Sandwich extends Product {
                 } else if (size == SandwichSize.LARGE) {
                     total += 3.00;
                 }
-
             } else if (topping.getType() == PremiumToppings.Type.CHEESE) {
                 if (size == SandwichSize.SMALL) {
                     total += 0.75;
@@ -109,6 +117,26 @@ public class Sandwich extends Product {
                 } else if (size == SandwichSize.LARGE) {
                     total += 2.25;
                 }
+            }
+        }
+
+        if (extraMeat) {
+            if (size == SandwichSize.SMALL) {
+                total += 0.50;
+            } else if (size == SandwichSize.MEDIUM) {
+                total += 1.00;
+            } else if (size == SandwichSize.LARGE) {
+                total += 1.50;
+            }
+        }
+
+        if (extraCheese) {
+            if (size == SandwichSize.SMALL) {
+                total += 0.30;
+            } else if (size == SandwichSize.MEDIUM) {
+                total += 0.60;
+            } else if (size == SandwichSize.LARGE) {
+                total += 0.90;
             }
         }
 
@@ -124,21 +152,34 @@ public class Sandwich extends Product {
             throw new IllegalStateException("Unexpected value: " + breadType);
         }
 
+
+
         return total;
     }
-public String orderDetails() {
+    @Override
+    public String productDetail() {
 
             StringBuilder details = new StringBuilder();
 
-            details.append(name).append(" ")
+            details.append("Custom sandwich:").append(" ")
                     .append(String.format("%.2f", getPrice()))  // price to 2 decimal places
                     .append("\nSize: ").append(size)
                     .append("\nBread type: ").append(breadType)
                     .append("\nToasted: ").append(isToasted ? "Yes" : "No")
-                    .append("\nRegular toppings: ").append(regularToppings)
-                    .append("\nPremium toppings: ").append(premiumToppings)
-                    .append("\nExtra meat toppings: ").append(premiumToppings)
-                    .append("\nExtra cheese toppings: ").append(premiumToppings);
+                    .append("\n Regular toppings");
+                    for (RegularToppings topping: regularToppings) {
+                    details.append(topping).append(", ");
+                    }
+                    details.append("\nPremium toppings: ");
+                    for (PremiumToppings toppings : premiumToppings) {
+                        details.append(toppings).append(", ");
+                    }
+                    if (extraMeat) {
+                        details.append("\nExtra meat");
+                    }
+                    if(extraCheese) {
+                        details.append("\nExtra cheese");
+                    }
 
             return details.toString();
         }

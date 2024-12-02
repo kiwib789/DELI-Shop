@@ -93,7 +93,7 @@ public class UserInterface {
                     break;
                 case "3":
                     System.out.println("Add chips ");
-                   chipsDisplay(order);
+                    chipsDisplay(order);
                     break;
                 case "4":
                     System.out.println("Proceed to checkout ");
@@ -123,8 +123,9 @@ public class UserInterface {
         selectPremiumToppings(sandwich);
         selectRegularToppings(sandwich);
         addExtraCheeseDisplay(sandwich);
-        addExtraMeatDisplay(sandwich);
-        orderService.addProductToOrder(order,sandwich);
+        sandwich.setExtraMeat(addExtraMeatDisplay(sandwich));
+        selectSauces(sandwich);
+        orderService.addProductToOrder(order, sandwich);
 
     }
 
@@ -155,7 +156,7 @@ public class UserInterface {
                 };
                 if (topping != null) {
                     sandwich.addRegularTopping(topping);
-                    System.out.println("You selected: " + topping + " premium toppings.");
+                    System.out.println("You selected: " + topping + " regular toppings.");
                 }
             }
         }
@@ -258,17 +259,14 @@ public class UserInterface {
     }
 
 
-
-
     public void addExtraCheeseDisplay(Sandwich sandwich) {
         boolean isRunning = true;
         while (isRunning) {
             System.out.println(Prompts.extraCheesePrompt);
             String toppingChoice = scanner.nextLine();
-            if (toppingChoice.equals("0")){
+            if (toppingChoice.equals("0")) {
                 isRunning = false;
-            }
-            else {
+            } else {
                 PremiumToppings topping = switch (toppingChoice) {
                     case "1" -> PremiumToppings.AMERICAN_CHEESE;
                     case "2" -> PremiumToppings.SWISS_CHEESE;
@@ -282,25 +280,25 @@ public class UserInterface {
                 };
                 if (topping != null) {
                     sandwich.addPremiumTopping(topping);
-                    System.out.println("You selected: " + topping + "  extra premium toppings.");
+                    System.out.println("You selected: " + topping + "  extra cheese.");
+                    isRunning = false;
 
                 }
             }
 
-    }
         }
+    }
 
 
-    public void addExtraMeatDisplay(Sandwich sandwich) {
+    public boolean addExtraMeatDisplay(Sandwich sandwich) {
         boolean isRunning = true;
         while (isRunning) {
             System.out.println(Prompts.extraMeatPrompt);
-            String toppingChoice = scanner.nextLine();
-            if (toppingChoice.equals("0")) {
+            String hasExtraMeat = scanner.nextLine();
+            if (hasExtraMeat.equals("0")) {
                 isRunning = false;
-            }
-            else {
-                PremiumToppings topping = switch (toppingChoice) {
+            } else {
+                PremiumToppings toppings = switch (hasExtraMeat) {
                     case "1" -> PremiumToppings.STEAK;
                     case "2" -> PremiumToppings.HAM;
                     case "3" -> PremiumToppings.SALAMI;
@@ -308,24 +306,26 @@ public class UserInterface {
                     case "5" -> PremiumToppings.CHICKEN;
                     case "6" -> PremiumToppings.BACON;
 
+
                     default -> {
                         System.out.println("Invalid input, try again");
                         yield null;
                     }
                 };
-                if (topping != null) {
-                    sandwich.addPremiumTopping(topping);
-                    System.out.println("You selected: " + topping + "  extra premium toppings.");
+                if (toppings != null) {
+                    sandwich.addPremiumTopping(toppings);
+                    System.out.println("You selected: " + toppings + "  extra meat.");
+                    isRunning = false;
 
                 }
             }
-
         }
+        return true;
     }
 
-        private boolean selectSignatureOption () {
-            return false;
-        }
+    private boolean selectSignatureOption() {
+        return false;
+    }
 
 
     // user chooses if they want the bread toasted
@@ -374,6 +374,7 @@ public class UserInterface {
                 if (drinkSize != null) {
                     orderService.addProductToOrder(order, new Drink("Drink", drinkSize));
                     System.out.println("You selected: " + drinkSize + " drink.");
+                    isRunning = false;
                 }
             }
         }
@@ -402,6 +403,7 @@ public class UserInterface {
                 if (chips != null) {
                     orderService.addProductToOrder(order, new Chips(chips));
                     System.out.println("You selected: " + chips + " chips.");
+                    isRunning = false;
                 }
             }
         }

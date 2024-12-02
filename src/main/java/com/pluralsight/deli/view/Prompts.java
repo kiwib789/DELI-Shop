@@ -4,16 +4,16 @@ import com.pluralsight.deli.enums.RegularToppings;
 
 public class Prompts {
     static String homescreenPrompt = """
-                    
-                    Please choose your order.
-                    
-                    1) Add Sandwich
-                    2) Add Drink
-                    3) Add Chips
-                    4) Checkout
-                    0) Cancel Order and return to home page
-                    
-                    """;
+            
+            Please choose your order.
+            
+            1) Add Sandwich
+            2) Add Drink
+            3) Add Chips
+            4) Checkout
+            0) Cancel Order and return to home page
+            
+            """;
 
     static String regularToppingsPrompt = """
             Select your regular toppings:
@@ -47,14 +47,14 @@ public class Prompts {
             Choose your option: """;
 
     static String chipsPrompt = """
-                    Please select the chips you would like.
-                    1) Potato chips
-                    2) BBQ chips
-                    3) Sour cream and onion chips
-                    4) Salt and vinegar chips
-                    0) Exit
-                    
-                    """;
+            Please select the chips you would like.
+            1) Potato chips
+            2) BBQ chips
+            3) Sour cream and onion chips
+            4) Salt and vinegar chips
+            0) Exit
+            
+            """;
 
     static String drinksSizePrompt = """
             Please choose drink size
@@ -64,14 +64,8 @@ public class Prompts {
             0) Exit
             """;
 
-    static String drinkTypePrompt = """
-            Please choose drink flavor
-            1) Cola
-            2) Tea
-            0) Exit
-            """;
 
-    static  String saucesPrompt = """
+    static String saucesPrompt = """
             Please choose sauces you would like
             1) Mayonnaise
             2) Mustard
@@ -88,6 +82,7 @@ public class Prompts {
             3) Provolone cheese
             4) Cheddar cheese
             0) No
+            
             """;
     static String extraMeatPrompt = """
             Would you like extra meat on your sandwich?
@@ -104,7 +99,7 @@ public class Prompts {
             Do you want your sandwich toasted?
             1) Yes
             2) No 
-            0) Exit
+          
             """;
 }
 
