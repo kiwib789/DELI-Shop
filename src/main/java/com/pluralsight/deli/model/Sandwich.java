@@ -166,7 +166,7 @@ public class Sandwich extends Product {
                     .append("\nSize: ").append(size)
                     .append("\nBread type: ").append(breadType)
                     .append("\nToasted: ").append(isToasted ? "Yes" : "No")
-                    .append("\n Regular toppings");
+                    .append("\nRegular toppings");
                     for (RegularToppings topping: regularToppings) {
                     details.append(topping).append(", ");
                     }
