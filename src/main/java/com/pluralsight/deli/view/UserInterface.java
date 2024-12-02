@@ -279,7 +279,7 @@ public class UserInterface {
                     }
                 };
                 if (topping != null) {
-                    sandwich.addPremiumTopping(topping);
+                    sandwich.setExtraCheese(true);
                     System.out.println("You selected: " + topping + "  extra cheese.");
                     isRunning = false;
 
@@ -313,7 +313,7 @@ public class UserInterface {
                     }
                 };
                 if (toppings != null) {
-                    sandwich.addPremiumTopping(toppings);
+                    sandwich.setExtraMeat(true);
                     System.out.println("You selected: " + toppings + "  extra meat.");
                     isRunning = false;
 
