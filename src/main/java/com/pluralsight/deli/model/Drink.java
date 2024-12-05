@@ -39,7 +39,7 @@ public class Drink extends Product {
     public String productDetail() {
         StringBuilder details = new StringBuilder();
 
-        details.append("Drink size: ").append(getSize());
+        details.append("\nDrink size: ").append(getSize());
         details.append("\nPrice: $").append(String.format("%.2f", getPrice()));
         return details.toString();
     }

@@ -26,7 +26,7 @@ public class Prompts {
             7) Pickles
             8) Guacamole
             9) Mushrooms
-            0) Exit
+            0) Done
             
             Choose your option: """;
 
@@ -42,7 +42,7 @@ public class Prompts {
             8) Swiss cheese
             9) Provolone cheese
             10) Cheddar cheese
-            0) Exit
+            0) Done
             
             Choose your option: """;
 
@@ -52,7 +52,7 @@ public class Prompts {
             2) BBQ chips
             3) Sour cream and onion chips
             4) Salt and vinegar chips
-            0) Exit
+            0) Done
             
             """;
 
@@ -61,7 +61,7 @@ public class Prompts {
             1) Small
             2) Medium
             3) Large
-            0) Exit
+            0) Done
             """;
 
 
@@ -73,7 +73,7 @@ public class Prompts {
             4) Ranch 
             5) Thousand Island
             6) Vinaigrette
-            0) Exit
+            0) Done
             """;
     static String extraCheesePrompt = """
             Would you like extra cheese on your sandwich?

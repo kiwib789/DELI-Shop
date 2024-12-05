@@ -161,11 +161,12 @@ public class Sandwich extends Product {
 
             StringBuilder details = new StringBuilder();
 
-            details.append("Custom sandwich:").append(" ")
+            details.append("\nCustom sandwich:").append(" ")
                     .append(String.format("%.2f", getPrice()))  // price to 2 decimal places
                     .append("\nSize: ").append(size)
                     .append("\nBread type: ").append(breadType)
                     .append("\nToasted: ").append(isToasted ? "Yes" : "No")
+                    .append("\nSauces: ").append(sauces)
                     .append("\nRegular toppings: ");
                     for (RegularToppings topping: regularToppings) {
                     details.append(topping).append(", ");
